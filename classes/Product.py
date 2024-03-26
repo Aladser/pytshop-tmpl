@@ -9,9 +9,12 @@ class Product:
     count: int
     """количество"""
 
-    def __init__(self, title, price, description="", count=0):
+    def __init__(self, title, price, count=0, description=""):
         """Товар"""
         self.title = title
         self.price = price
-        self.description = description
         self.count = count
+        self.description = description
+
+    def __repr__(self):
+        return f"{self.title} {self.price} {self.count}"
