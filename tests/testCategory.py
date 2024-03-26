@@ -1,10 +1,19 @@
 import pytest
-from classes import Category
+from classes import Category, Product
+
+title = 'еда'
+description = 'здесь должна быть реклама'
+# товары для теста категории
+prd1 = Product('Хлеб', 5)
+prd2 = Product('Хлеб', 7)
+prd3 = Product('Чай', 15)
+prd4 = Product('Сахар', 20)
+products = [prd1, prd2, prd3, prd4]
 
 
 @pytest.fixture
 def category():
-    return Category('Еда', ['Хлеб', 'Хлеб', 'Чай', 'Сахар'])
+    return Category(title, products, description)
 
 
 def test_count_categories(category):
@@ -12,9 +21,9 @@ def test_count_categories(category):
 
 
 def test_init(category):
-    assert category.title == 'Еда'
-    assert category.products == {'Хлеб', 'Чай', 'Сахар'}
-    assert category.description == ""
+    assert category.title == title
+    assert category.products == products
+    assert category.description == description
 
 
 def test_products(category):

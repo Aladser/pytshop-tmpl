@@ -1,8 +1,12 @@
+from classes import *
+
+
 class Category:
     """Категория"""
     title: str
     """название"""
-    products: set
+    # список продуктов класса classes.Product
+    products: list
     """список продуктов"""
     description: str
     """описание"""
@@ -11,14 +15,22 @@ class Category:
 
     def __init__(self, title, products=[], description=""):
         """Категория"""
-        self.title = title
-        # логично, что категория должна иметь список уникальных продуктов
-        self.products = set(products)
-        self.description = description
-        # логично, что категории тоже должны быть уникальны, но нельзя сделать мутабельный тип статическим?
-        # по крайнем мере в других языках так
         Category.count += 1
+        self.title = title
+        self.products = products
+        self.description = description
 
     def products_count(self):
         """ общее количество уникальных продуктов"""
-        return len(self.products)
+        # пояснений дублей нет, так как дубли считаю ошибкой отправителя данных
+        if len(self.products) == 0:
+            return 0
+
+        product_names_list = []
+        for product in self.products:
+            if product.title not in product_names_list:
+                product_names_list.append(product.title)
+        return len(product_names_list)
+
+    def __repr__(self):
+        return self.title

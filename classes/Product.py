@@ -15,3 +15,6 @@ class Product:
         self.price = price
         self.count = count
         self.description = description
+
+    def __repr__(self):
+        return f"{self.title} {self.price} {self.count}"
