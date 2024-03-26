@@ -4,14 +4,14 @@ class Product:
     """название"""
     price: float
     """цена"""
-    count: int
-    """количество"""
     description: str
     """описание"""
+    count: int
+    """количество"""
 
-    def __init__(self, title, price, count=0, description=""):
+    def __init__(self, title, price, description="", count=0):
         """Товар"""
         self.title = title
         self.price = price
-        self.count = count
         self.description = description
+        self.count = count
