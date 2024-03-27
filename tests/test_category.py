@@ -1,29 +1,41 @@
 import pytest
 from classes import Category, Product
 
-title = 'еда'
-description = 'здесь должна быть реклама'
-# товары для теста категории
-prd1 = Product('Хлеб', 5, 1, 'Товар 1')
-prd3 = Product('Чай', 15, 3, 'Товар 2')
-prd4 = Product('Сахар', 20, 4, 'Товар 3')
-products = [prd1, prd3, prd4]
+
+@pytest.fixture
+def title():
+    return 'еда'
 
 
 @pytest.fixture
-def category():
+def description():
+    return 'здесь должна быть реклама'
+
+
+@pytest.fixture
+def products():
+    return [
+        Product('Хлеб', 5, 1, 'Товар 1'),
+        Product('Чай', 15, 3, 'Товар 2'),
+        Product('Сахар', 20, 4, 'Товар 3')
+    ]
+
+
+@pytest.fixture
+def category(title, products, description):
     return Category(title, products, description)
 
 
-def test_count_categories(category):
-    assert category.count == 1
-
-
-def test_init(category):
-    assert category.title == title
-    assert category.products == products
-    assert category.description == description
-
-
 def test_products(category):
-    assert category.products_count == 3
+    assert Category.products_count == 3
+
+
+def test_count_categories(category):
+    # в таком случае неизбежно создается 2 экземпляра
+    assert Category.count == 2
+
+
+def test_init(category, title, products, description):
+    assert category.title == title
+    assert category.description == description
+    assert category.products == products
