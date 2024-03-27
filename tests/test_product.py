@@ -4,7 +4,7 @@ from classes import Product
 
 @pytest.fixture
 def product():
-    return Product('Хлеб', 1.1, 5, "товар")
+    return Product(title='Хлеб', price=1.1, count=5, description="товар")
 
 
 def test_init(product):
