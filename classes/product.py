@@ -1,15 +1,11 @@
 class Product:
     """Товар"""
     title: str
-    """название"""
     price: float
-    """цена"""
     description: str
-    """описание"""
     count: int
-    """количество"""
 
-    def __init__(self, title, price, count=0, description=""):
+    def __init__(self, title: str, price: float, count: int, description: str):
         """Товар"""
         self.title = title
         self.price = price
