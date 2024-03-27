@@ -15,9 +15,9 @@ def description():
 @pytest.fixture
 def products():
     return [
-        Product('Хлеб', 5, 1, 'Товар 1'),
-        Product('Чай', 15, 3, 'Товар 2'),
-        Product('Сахар', 20, 4, 'Товар 3')
+        Product(title='Хлеб', price=5, count=1, description='Товар 1'),
+        Product(title='Чай', price=15, count=3, description='Товар 2'),
+        Product(title='Сахар', price=20, count=4, description='Товар 3')
     ]
 
 
