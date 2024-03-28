@@ -28,7 +28,9 @@ def test_create():
     title = 'яблоко'
     price = 11.5
     count = 3
-    product = Product.create({'title': title, 'price': price, 'count': count})
+    description = 'aaaaaaaaaaaaaaaa'
+    product = Product.create({'title': title, 'price': price, 'count': count, 'description':description})
     assert product.title ==  title
     assert product.price == price
     assert product.count == count
+    assert product.description == description
