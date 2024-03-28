@@ -5,7 +5,7 @@ class Product:
     description: str
     count: int
 
-    def __init__(self, title: str, price: float, count: int, description: str = ""):
+    def __init__(self, title: str, price: float, count: int, description: str):
         self.__price = price
         self.title = title
         self.count = count
@@ -33,7 +33,12 @@ class Product:
 
     @classmethod
     def create(cls, prd_obj: dict):
-        return cls(prd_obj['title'], prd_obj['price'], prd_obj['count'])
+        return cls(
+            prd_obj['title'],
+            prd_obj['price'],
+            prd_obj['count'],
+            prd_obj['description']
+        )
 
     def __repr__(self):
         return f"{self.title}, {self.price} руб. Остаток: {self.count} шт."
