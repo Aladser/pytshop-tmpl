@@ -14,6 +14,21 @@ def test_init(product):
     assert product.description == "товар"
 
 
-def test_add_plus(product):
-    product.price = 15
-    assert product.price == 15
+def test_price(product):
+    price = 15
+    # установка новой цены
+    product.price =  price
+    assert product.price ==  price
+    # нулевая цена
+    product.price = 0
+    assert product.price ==  price
+
+
+def test_create():
+    title = 'яблоко'
+    price = 11.5
+    count = 3
+    product = Product.create({'title': title, 'price': price, 'count': count})
+    assert product.title ==  title
+    assert product.price == price
+    assert product.count == count
