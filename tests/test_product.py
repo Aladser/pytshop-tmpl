@@ -17,11 +17,11 @@ def test_init(product):
 def test_price(product):
     price = 15
     # установка новой цены
-    product.price =  price
-    assert product.price ==  price
+    product.price = price
+    assert product.price == price
     # нулевая цена
-    product.price = 0
-    assert product.price ==  price
+    with pytest.raises(Exception):
+        product.price = 0
 
 
 def test_create():
@@ -29,8 +29,8 @@ def test_create():
     price = 11.5
     count = 3
     description = 'aaaaaaaaaaaaaaaa'
-    product = Product.create({'title': title, 'price': price, 'count': count, 'description':description})
-    assert product.title ==  title
+    product = Product.create({'title': title, 'price': price, 'count': count, 'description': description})
+    assert product.title == title
     assert product.price == price
     assert product.count == count
     assert product.description == description
