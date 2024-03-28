@@ -27,6 +27,10 @@ class Product:
         else:
             raise Exception('Цена должна быть больше нуля')
 
+    @price.deleter
+    def price(self):
+        self.__price = None
+
     @classmethod
     # в качестве примера берется экземпляр из Задания 2:
     # {название}, {цена} руб. Остаток: {количество} шт.
