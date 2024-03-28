@@ -1,4 +1,4 @@
-import classes
+from classes.product import Product
 
 
 class Category:
@@ -15,7 +15,7 @@ class Category:
         self.title = title
         self.description = description
 
-    def add_product(self, new_product):
+    def add_product(self, new_product: Product):
         # не вижу быстрее по скорости решения, чем перебор массива. В любом случае нужен перебор
         for i in range(0, len(self.__products)):
             if self.__products[i].title == new_product.title:

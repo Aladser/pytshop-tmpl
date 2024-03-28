@@ -16,7 +16,7 @@ class Product:
         return self.__price
 
     @price.setter
-    def price(self, value):
+    def price(self, value: int):
         if value > 0:
             if value < self.__price:
                 user_input = input('Вы действительно хотите снизить цену?')
@@ -25,21 +25,15 @@ class Product:
             else:
                 self.__price = value
         else:
-            raise Exception('Цена должна быть больше нуля')
+            print('Цена должна быть больше нуля')
 
     @price.deleter
     def price(self):
         self.__price = None
 
     @classmethod
-    # в качестве примера берется экземпляр из Задания 2:
-    # {название}, {цена} руб. Остаток: {количество} шт.
-    def create(cls, product_str):
-        title, params = product_str.split(',')
-        params_list = params.split(' ')
-        price = float(params_list[1])
-        count = params_list[4]
-        return cls(title, price, count)
+    def create(cls, prd_obj: dict):
+        return cls(prd_obj['title'], prd_obj['price'], prd_obj['count'])
 
     def __repr__(self):
         return f"{self.title}, {self.price} руб. Остаток: {self.count} шт."
