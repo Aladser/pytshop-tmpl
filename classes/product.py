@@ -35,9 +35,3 @@ class Product:
 
     def __repr__(self):
         return f"{self.title}, {self.price} руб. Остаток: {self.count} шт."
-
-
-if __name__ == '__main__':
-    prd = Product.create('Samsung Galaxy C23 Ultra, 180000.0 руб. Остаток: 5 шт.')
-    #prd = Product('Samsung Galaxy C23 Ultra', 180000.5, 5)
-    print(prd.price, type(prd.price))
