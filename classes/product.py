@@ -1,13 +1,43 @@
 class Product:
-    """Товар"""
+    __price: float
+
     title: str
-    price: float
     description: str
     count: int
 
-    def __init__(self, title: str, price: float, count: int, description: str):
+    def __init__(self, title: str, price: float, count: int, description: str = ""):
         """Товар"""
         self.title = title
         self.price = price
         self.count = count
         self.description = description
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self, value):
+        if value > 0:
+            self.__price = value
+        else:
+            raise Exception('Цена должна быть больше нуля')
+
+    @classmethod
+    # в качества примера берется экземпляр из Задания 2:
+    # {название}, {цена} руб. Остаток: {количество} шт.
+    def create(cls, product_str):
+        title, params = product_str.split(',')
+        params_list = params.split(' ')
+        price = float(params_list[1])
+        count = params_list[4]
+        return cls(title, price, count)
+
+    def __repr__(self):
+        return f"{self.title}, {self.price} руб. Остаток: {self.count} шт."
+
+
+if __name__ == '__main__':
+    prd = Product.create('Samsung Galaxy C23 Ultra, 180000.0 руб. Остаток: 5 шт.')
+    #prd = Product('Samsung Galaxy C23 Ultra', 180000.5, 5)
+    print(prd.price, type(prd.price))
