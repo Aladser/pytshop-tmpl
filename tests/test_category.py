@@ -14,12 +14,11 @@ def description():
 
 @pytest.fixture
 def products():
-    prds = [
+    return [
         Product(title='Хлеб', price=5, count=1, description='Товар 1'),
         Product(title='Чай', price=15, count=3, description='Товар 2'),
         Product(title='Сахар', price=20, count=4, description='Товар 3')
     ]
-    return prds
 
 
 @pytest.fixture
@@ -37,9 +36,21 @@ def test_count_categories(category):
 
 
 def test_init(category, title, products, description):
-    print()
-    print(type(products[0]))
-    print(type(category.products[0]))
-
     assert category.title == title
     assert category.description == description
+
+
+def test_add(category):
+    product = Product(title='Батон', price=5, count=1, description='Товар 4')
+    category.add_product(product)
+    # добавить
+    assert Category.products_count == 13
+    assert category.products[3].split(' ')[1] == '5'
+    # повысить цену
+    product = Product(title='Батон', price=10, count=1, description='Товар 4')
+    category.add_product(product)
+    assert category.products[3].split(' ')[1] == '10'
+    # понизить цену
+    product = Product(title='Батон', price=4, count=1, description='Товар 4')
+    category.add_product(product)
+    assert category.products[3].split(' ')[1] == '10'

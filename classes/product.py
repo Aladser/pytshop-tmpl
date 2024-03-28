@@ -6,9 +6,8 @@ class Product:
     count: int
 
     def __init__(self, title: str, price: float, count: int, description: str = ""):
-        """Товар"""
+        self.__price = price
         self.title = title
-        self.price = price
         self.count = count
         self.description = description
 
@@ -19,12 +18,17 @@ class Product:
     @price.setter
     def price(self, value):
         if value > 0:
-            self.__price = value
+            if value < self.__price:
+                user_input = input('Вы действительно хотите снизить цену?')
+                if user_input == 'y':
+                    self.__price = value
+            else:
+                self.__price = value
         else:
             raise Exception('Цена должна быть больше нуля')
 
     @classmethod
-    # в качества примера берется экземпляр из Задания 2:
+    # в качестве примера берется экземпляр из Задания 2:
     # {название}, {цена} руб. Остаток: {количество} шт.
     def create(cls, product_str):
         title, params = product_str.split(',')
