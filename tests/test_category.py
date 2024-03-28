@@ -38,4 +38,19 @@ def test_count_categories(category):
 def test_init(category, title, products, description):
     assert category.title == title
     assert category.description == description
-    assert category.products == products
+
+
+def test_add(category):
+    product = Product(title='Батон', price=5, count=1, description='Товар 4')
+    category.add_product(product)
+    # добавить
+    assert Category.products_count == 13
+    assert category.products[3].split(' ')[1] == '5'
+    # повысить цену
+    product = Product(title='Батон', price=10, count=1, description='Товар 4')
+    category.add_product(product)
+    assert category.products[3].split(' ')[1] == '10'
+    # понизить цену
+    product = Product(title='Батон', price=4, count=1, description='Товар 4')
+    category.add_product(product)
+    assert category.products[3].split(' ')[1] == '10'

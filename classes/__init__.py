@@ -1,4 +1,4 @@
-from classes import category, product
+from classes import product, category
 
-Category = category.Category
 Product = product.Product
+Category = category.Category
