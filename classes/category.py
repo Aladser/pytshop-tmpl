@@ -18,8 +18,8 @@ class Category:
     def add_product(self, new_product: Product):
         # не вижу быстрее по скорости решения, чем перебор массива. В любом случае нужен перебор
         for i in range(0, len(self.__products)):
-            if self.__products[i].title == new_product.title:
-                self.__products[i].count += new_product.count
+            if self.__products[i].name == new_product.name:
+                self.__products[i].quantity += new_product.quantity
                 if self.__products[i].price < new_product.price:
                     self.__products[i].price = new_product.price
                 return
@@ -28,4 +28,4 @@ class Category:
 
     @property
     def products(self):
-        return [f"{prd.title}, {prd.price} руб. Остаток: {prd.count} шт." for prd in self.__products]
+        return [f"{prd.name}, {prd.price} руб. Остаток: {prd.quantity} шт." for prd in self.__products]

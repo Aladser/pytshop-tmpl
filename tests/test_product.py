@@ -4,13 +4,13 @@ from classes import Product
 
 @pytest.fixture
 def product():
-    return Product(title='Хлеб', price=10, count=5, description="товар")
+    return Product(name='Хлеб', price=10, quantity=5, description="товар")
 
 
 def test_init(product):
-    assert product.title == 'Хлеб'
+    assert product.name == 'Хлеб'
     assert product.price == 10
-    assert product.count == 5
+    assert product.quantity == 5
     assert product.description == "товар"
 
 
@@ -24,13 +24,13 @@ def test_price(product):
         product.price = 0
 
 
-def test_create():
+def test_create(product):
     title = 'яблоко'
     price = 11.5
     count = 3
-    description = 'aaaaaaaaaaaaaaaa'
-    product = Product.create({'title': title, 'price': price, 'count': count, 'description': description})
-    assert product.title == title
+    description = 'фрукт'
+    product = Product.create({'name': title, 'price': price, 'quantity': count, 'description': description})
+    assert product.name == title
     assert product.price == price
-    assert product.count == count
+    assert product.quantity == count
     assert product.description == description
