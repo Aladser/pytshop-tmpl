@@ -1,15 +1,26 @@
 class Product:
+    __name: str
+    __description: str
     __price: float
+    __quantity: int
 
-    title: str
-    description: str
-    count: int
-
-    def __init__(self, title: str, price: float, count: int, description: str):
+    def __init__(self, name: str, price: float, quantity: int, description: str):
         self.__price = price
-        self.title = title
-        self.count = count
-        self.description = description
+        self.__name = name
+        self.__quantity = quantity
+        self.__description = description
+
+    @classmethod
+    def create(cls, prd_obj: dict):
+        return cls(**prd_obj)
+
+    @property
+    def name(self):
+        return self.__name
+
+    @property
+    def description(self):
+        return self.__description
 
     @property
     def price(self):
@@ -27,13 +38,13 @@ class Product:
         else:
             raise Exception('Цена должна быть больше нуля')
 
-    @price.deleter
-    def price(self):
-        self.__price = None
+    @property
+    def quantity(self):
+        return self.__quantity
 
-    @classmethod
-    def create(cls, prd_obj: dict):
-        return cls(**prd_obj)
+    @quantity.setter
+    def quantity(self, value: int):
+        self.__quantity = value
 
     def __repr__(self):
-        return f"{self.title}, {self.price} руб. Остаток: {self.count} шт."
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."

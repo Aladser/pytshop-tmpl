@@ -10,8 +10,8 @@ if __name__ == '__main__':
     # парсинг JSON-файла с созданием категорий и их продуктов
     for item in data:
         products_list = []
-        for prd in item['products']:
-            product = Product(prd['name'],prd['price'],prd['quantity'],prd['description'] )
+        for prd_item in item['products']:
+            product = Product(**prd_item)
             products_list.append(product)
         category = Category(item['name'], products_list, item['description'])
         categories.append(category)

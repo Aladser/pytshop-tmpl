@@ -15,7 +15,7 @@ def description():
 @pytest.fixture
 def products():
     return [
-        Product(title='Хлеб', price=5, count=1, description='Товар 1')
+        Product(name='Хлеб', price=5, quantity=1, description='Товар 1')
     ]
 
 
@@ -36,21 +36,21 @@ def test_work(category):
     # вывод продуктов
     assert category.products == ['Хлеб, 5 руб. Остаток: 1 шт.']
     # дубль товара
-    prd4 = Product(title='Хлеб', price=5, count=1, description='Товар 1')
+    prd4 = Product(name='Хлеб', price=5, quantity=1, description='Товар 1')
     category.add_product(prd4)
     assert Category.products_count == 2
     # повышение цены
-    prd4 = Product(title='Хлеб', price=10, count=1, description='Товар 1')
+    prd4 = Product(name='Хлеб', price=10, quantity=1, description='Товар 1')
     category.add_product(prd4)
     assert category.products[0].split(' ')[1] == '10'
     # понижение цены
-    prd4 = Product(title='Хлеб', price=2, count=1, description='Товар 1')
+    prd4 = Product(name='Хлеб', price=2, quantity=1, description='Товар 1')
     category.add_product(prd4)
     assert category.products[0].split(' ')[1] == '10'
     # новый товар
-    prd4 = Product(title='Сахар', price=20, count=4, description='Товар 3')
+    prd4 = Product(name='Сахар', price=20, quantity=4, description='Товар 3')
     category.add_product(prd4)
     assert Category.products_count == 3
-    prd4 = Product(title='Чай', price=15, count=3, description='Товар 2')
+    prd4 = Product(name='Чай', price=15, quantity=3, description='Товар 2')
     category.add_product(prd4)
     assert Category.products_count == 4
