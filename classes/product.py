@@ -5,6 +5,13 @@ class Product:
     __quantity: int
 
     def __init__(self, name: str, price: float, quantity: int, description: str):
+        """
+        Товары
+        :param name: имя
+        :param price: цена
+        :param quantity: количество
+        :param description: описание
+        """
         self.__price = price
         self.__name = name
         self.__quantity = quantity

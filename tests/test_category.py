@@ -26,7 +26,7 @@ def category(title, products, description):
 
 def test_init(category, title, products, description):
     print(category.products)
-    assert category.title == title
+    assert category.name == title
     assert category.description == description
     assert Category.products_count == 1
     assert Category.count == 1

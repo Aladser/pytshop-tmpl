@@ -5,14 +5,20 @@ class Category:
     count = 0
     products_count = 0
     __products: list
-    title: str
+    name: str
     description: str
 
-    def __init__(self, title: str, products: list, description: str):
+    def __init__(self, name: str, products: list, description: str):
+        """
+        Категория
+        :param name: имя
+        :param products: товары
+        :param description: описание
+        """
         Category.count += 1
         Category.products_count += len(products)
         self.__products = products
-        self.title = title
+        self.name = name
         self.description = description
 
     def add_product(self, new_product: Product):
