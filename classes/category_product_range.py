@@ -3,7 +3,7 @@ from classes.category import Category
 
 class CategoryProductRange:
     def __init__(self, category: Category):
-        self.stop = category.products_count
+        self.stop = len(category.products)
 
     def __iter__(self):
         self.current_value = -1
