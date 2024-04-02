@@ -35,3 +35,9 @@ def test_create(product):
     assert product.price == price
     assert product.quantity == count
     assert product.description == description
+
+
+def test_add():
+    prd = Product(name='Хлеб', price=5, quantity=5, description="товар")
+    other = Product(name='Хлеб', price=25, quantity=3, description="товар")
+    assert prd + other == 100

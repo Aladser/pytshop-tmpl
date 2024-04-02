@@ -27,7 +27,7 @@ def category(title, products, description):
 def test_init(category, title, products, description):
     assert category.name == title
     assert category.description == description
-    assert category.products == products
+    assert category.products == 'Хлеб, 5 руб. Остаток: 1 шт.\n'
     assert Category.products_count == 1
     assert Category.count == 1
 

@@ -34,4 +34,12 @@ class Category:
 
     @property
     def products(self):
-        return [prd for prd in self.__products]
+        products_str = ''
+        for prd in self.__products:
+            products_str += f"{str(prd)}\n"
+        return products_str
+
+    def __str__(self):
+        # не вижу смысла реализовывать len(), т.к. уже есть переменная, хранящая количество продуктов
+        # семантически будет дубляж кода
+        return f"Название: {self.name}, количество продуктов: {self.products_count} шт."
