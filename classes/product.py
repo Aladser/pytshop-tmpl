@@ -53,5 +53,8 @@ class Product:
     def quantity(self, value: int):
         self.__quantity = value
 
-    def __repr__(self):
-        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+    def __add__(self, other):
+        return self.price * self.quantity + other.price * other.quantity
+
+    def __str__(self):
+        return f"{self.__name}, {self.__price} руб. Остаток: {self.__quantity} шт."

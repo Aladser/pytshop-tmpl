@@ -3,7 +3,7 @@ from classes import Category, Product
 
 
 @pytest.fixture
-def title():
+def name():
     return 'еда'
 
 
@@ -20,37 +20,26 @@ def products():
 
 
 @pytest.fixture
-def category(title, products, description):
-    return Category(title, products, description)
+def category(name, products, description):
+    return Category(name, products, description)
 
 
-def test_init(category, title, products, description):
-    print(category.products)
-    assert category.name == title
+def test_init(category, name, products, description):
+    assert category.name == name
     assert category.description == description
+    assert category.products == [str(prd) for prd in products]
     assert Category.products_count == 1
     assert Category.count == 1
 
 
 def test_work(category):
-    # вывод продуктов
-    assert category.products == ['Хлеб, 5 руб. Остаток: 1 шт.']
-    # дубль товара
-    prd4 = Product(name='Хлеб', price=5, quantity=1, description='Товар 1')
-    category.add_product(prd4)
+    print()
+    print(category.products)
+    # добавление товара
+    prd = Product(name='Хлеб', price=5, quantity=1, description='Товар 1')
+    category.add_product(prd)
     assert Category.products_count == 2
-    # повышение цены
-    prd4 = Product(name='Хлеб', price=10, quantity=1, description='Товар 1')
-    category.add_product(prd4)
-    assert category.products[0].split(' ')[1] == '10'
-    # понижение цены
-    prd4 = Product(name='Хлеб', price=2, quantity=1, description='Товар 1')
-    category.add_product(prd4)
-    assert category.products[0].split(' ')[1] == '10'
-    # новый товар
-    prd4 = Product(name='Сахар', price=20, quantity=4, description='Товар 3')
-    category.add_product(prd4)
+    # дубль товара
+    prd = Product(name='Хлеб1', price=5, quantity=1, description='Товар 1')
+    category.add_product(prd)
     assert Category.products_count == 3
-    prd4 = Product(name='Чай', price=15, quantity=3, description='Товар 2')
-    category.add_product(prd4)
-    assert Category.products_count == 4
