@@ -22,7 +22,6 @@ class Category:
         self.description = description
 
     def add_product(self, new_product: Product):
-        # не вижу быстрее по скорости решения, чем перебор массива. В любом случае нужен перебор
         for i in range(0, len(self.__products)):
             if self.__products[i].name == new_product.name:
                 self.__products[i].quantity += new_product.quantity
@@ -36,11 +35,11 @@ class Category:
     def products(self):
         return [str(prd) for prd in self.__products]
 
-    def __str__(self):
-        # не вижу смысла реализовывать len(), т.к. уже есть переменная, хранящая количество продуктов
-        # семантически будет дубляж кода
-        return f"Название: {self.name}, количество продуктов: {self.products_count} шт."
-
     def __len__(self):
-        # даже хз, что сичтать размером категории
-        return len(self.__products)
+        prd_count = 0
+        for prd in self.__products:
+            prd_count += len(prd)
+        return prd_count
+
+    def __str__(self):
+        return f"Название: {self.name}, количество продуктов: {self.len()} шт."

@@ -3,39 +3,28 @@ from classes import Category, Product
 
 
 @pytest.fixture
-def name():
-    return 'еда'
-
-
-@pytest.fixture
-def description():
-    return 'здесь должна быть реклама'
-
-
-@pytest.fixture
 def products():
     return [
-        Product(name='Хлеб', price=5, quantity=1, description='Товар 1')
+        Product(name='Хлеб', price=5, quantity=12, description='Товар 1')
     ]
 
 
 @pytest.fixture
-def category(name, products, description):
-    return Category(name, products, description)
+def category(products):
+    return Category('еда', products, 'здесь должна быть реклама')
 
 
-def test_init(category, name, products, description):
-    assert category.name == name
-    assert category.description == description
+def test_init(category, products):
+    assert category.name == 'еда'
+    assert category.description == 'здесь должна быть реклама'
     assert category.products == [str(prd) for prd in products]
     assert Category.products_count == 1
     assert Category.count == 1
-    assert len(category) == 1
+    assert len(category) == 12
+    assert category.products == ['Хлеб, 5 руб. Остаток: 12 шт.']
 
 
 def test_work(category):
-    print()
-    print(category.products)
     # добавление товара
     prd = Product(name='Хлеб', price=5, quantity=1, description='Товар 1')
     category.add_product(prd)
