@@ -34,10 +34,7 @@ class Category:
 
     @property
     def products(self):
-        products_str = ''
-        for prd in self.__products:
-            products_str += f"{str(prd)}\n"
-        return products_str
+        return [str(prd) for prd in self.__products]
 
     def __str__(self):
         # не вижу смысла реализовывать len(), т.к. уже есть переменная, хранящая количество продуктов

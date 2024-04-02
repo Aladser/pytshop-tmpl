@@ -3,7 +3,7 @@ from classes import Category, Product
 
 
 @pytest.fixture
-def title():
+def name():
     return 'еда'
 
 
@@ -20,19 +20,21 @@ def products():
 
 
 @pytest.fixture
-def category(title, products, description):
-    return Category(title, products, description)
+def category(name, products, description):
+    return Category(name, products, description)
 
 
-def test_init(category, title, products, description):
-    assert category.name == title
+def test_init(category, name, products, description):
+    assert category.name == name
     assert category.description == description
-    assert category.products == 'Хлеб, 5 руб. Остаток: 1 шт.\n'
+    assert category.products == [str(prd) for prd in products]
     assert Category.products_count == 1
     assert Category.count == 1
 
 
 def test_work(category):
+    print()
+    print(category.products)
     # добавление товара
     prd = Product(name='Хлеб', price=5, quantity=1, description='Товар 1')
     category.add_product(prd)
