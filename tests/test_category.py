@@ -30,6 +30,7 @@ def test_init(category, name, products, description):
     assert category.products == [str(prd) for prd in products]
     assert Category.products_count == 1
     assert Category.count == 1
+    assert len(category) == 1
 
 
 def test_work(category):

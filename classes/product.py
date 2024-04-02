@@ -58,3 +58,6 @@ class Product:
 
     def __str__(self):
         return f"{self.__name}, {self.__price} руб. Остаток: {self.__quantity} шт."
+
+    def __len__(self):
+        return self.__quantity
