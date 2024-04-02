@@ -2,8 +2,8 @@ from classes.product import Product
 
 
 class Category:
-    count = 0
-    products_count = 0
+    quantity = 0
+    products_quantity = 0
     __products: list
     name: str
     description: str
@@ -15,8 +15,8 @@ class Category:
         :param products: товары
         :param description: описание
         """
-        Category.count += 1
-        Category.products_count += len(products)
+        Category.quantity += 1
+        Category.products_quantity += len(products)
         self.__products = products
         self.name = name
         self.description = description
@@ -29,7 +29,7 @@ class Category:
                     self.__products[i].price = new_product.price
                 return
         self.__products.append(new_product)
-        Category.products_count += 1
+        Category.products_quantity += 1
 
     @property
     def products(self):

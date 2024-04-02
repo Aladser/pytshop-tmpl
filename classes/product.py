@@ -43,7 +43,7 @@ class Product:
             else:
                 self.__price = value
         else:
-            raise Exception('Цена должна быть больше нуля')
+            raise ValueError('Цена должна быть больше нуля')
 
     @property
     def quantity(self):
@@ -51,7 +51,10 @@ class Product:
 
     @quantity.setter
     def quantity(self, value: int):
-        self.__quantity = value
+        if value >= 0:
+            self.__quantity = value
+        else:
+            raise ValueError('Количество не может быть отрицательным числом')
 
     def __add__(self, other):
         return self.price * self.quantity + other.price * other.quantity
