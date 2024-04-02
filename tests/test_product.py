@@ -10,7 +10,10 @@ def product():
 def test_init(product):
     assert product.name == 'Хлеб'
     assert product.price == 10
+    assert product.quantity == 5
     assert len(product) == 5
+    with pytest.raises(Exception):
+        assert product.quantity == -5
     assert product.description == "товар"
     print(f"\n{product}", end='')
 
