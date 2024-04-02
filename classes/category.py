@@ -34,4 +34,4 @@ class Category:
 
     @property
     def products(self):
-        return [f"{prd.name}, {prd.price} руб. Остаток: {prd.quantity} шт." for prd in self.__products]
+        return [prd for prd in self.__products]

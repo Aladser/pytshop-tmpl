@@ -12,6 +12,7 @@ def test_init(product):
     assert product.price == 10
     assert product.quantity == 5
     assert product.description == "товар"
+    print(f"\n{product}", end='')
 
 
 def test_price(product):

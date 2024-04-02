@@ -16,6 +16,7 @@ class Product:
         self.__name = name
         self.__quantity = quantity
         self.__description = description
+        self.__prd_str = f"{self.__name}, {self.__price} руб. Остаток: {self.__quantity} шт."
 
     @classmethod
     def create(cls, prd_obj: dict):
@@ -53,5 +54,8 @@ class Product:
     def quantity(self, value: int):
         self.__quantity = value
 
+    def __str__(self):
+        return self.__prd_str
+
     def __repr__(self):
-        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+        return self.__prd_str
