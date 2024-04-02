@@ -20,6 +20,6 @@ if __name__ == '__main__':
     for ctg in categories:
         print(f"Название: {ctg.name}")
         print(f"Описание: {ctg.description}")
-        print(f"Товары (количество:{ctg.products_quantity}):")
+        print(f"Товары (количество:{len(ctg)}):")
         [print(prd) for prd in ctg.products]
         print('-----')
