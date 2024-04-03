@@ -1,4 +1,4 @@
-from classes import Product, Category, CategoryProductRange
+from src import Product, Category, CategoryProductRange
 import pytest
 
 

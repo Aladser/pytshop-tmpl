@@ -1,4 +1,4 @@
-from classes.category import Category
+from src.category import Category
 
 
 class CategoryProductRange:

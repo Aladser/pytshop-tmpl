@@ -1,4 +1,4 @@
-from classes.product import Product
+from src.product import Product
 
 
 class Category:
@@ -22,11 +22,11 @@ class Category:
         self.__description = description
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self.__name
 
     @property
-    def description(self):
+    def description(self) -> str:
         return self.__description
 
     def add_product(self, new_product: Product):
@@ -40,14 +40,14 @@ class Category:
         Category.products_quantity += 1
 
     @property
-    def products(self):
+    def products(self) -> list:
         return [str(prd) for prd in self.__products]
 
-    def __len__(self):
+    def __len__(self) -> int:
         prd_count = 0
         for prd in self.__products:
             prd_count += len(prd)
         return prd_count
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Название: {self.name}, количество продуктов: {self.__len__()} шт."
