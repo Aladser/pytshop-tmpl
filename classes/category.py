@@ -5,8 +5,8 @@ class Category:
     quantity = 0
     products_quantity = 0
     __products: list
-    name: str
-    description: str
+    __name: str
+    __description: str
 
     def __init__(self, name: str, products: list, description: str):
         """
@@ -18,8 +18,16 @@ class Category:
         Category.quantity += 1
         Category.products_quantity += len(products)
         self.__products = products
-        self.name = name
-        self.description = description
+        self.__name = name
+        self.__description = description
+
+    @property
+    def name(self):
+        return self.__name
+
+    @property
+    def description(self):
+        return self.__description
 
     def add_product(self, new_product: Product):
         for i in range(0, len(self.__products)):
