@@ -11,7 +11,11 @@ def test_init(product):
     assert product.name == 'Хлеб'
     assert product.price == 10
     assert product.quantity == 5
+    assert len(product) == 5
+    with pytest.raises(Exception):
+        assert product.quantity == -5
     assert product.description == "товар"
+    print(f"\n{product}", end='')
 
 
 def test_price(product):
@@ -34,3 +38,9 @@ def test_create(product):
     assert product.price == price
     assert product.quantity == count
     assert product.description == description
+
+
+def test_add():
+    prd = Product(name='Хлеб', price=5, quantity=5, description="товар")
+    other = Product(name='Хлеб', price=25, quantity=3, description="товар")
+    assert prd + other == 100

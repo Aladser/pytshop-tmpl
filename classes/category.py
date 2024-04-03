@@ -2,8 +2,8 @@ from classes.product import Product
 
 
 class Category:
-    count = 0
-    products_count = 0
+    quantity = 0
+    products_quantity = 0
     __products: list
     name: str
     description: str
@@ -15,14 +15,13 @@ class Category:
         :param products: товары
         :param description: описание
         """
-        Category.count += 1
-        Category.products_count += len(products)
+        Category.quantity += 1
+        Category.products_quantity += len(products)
         self.__products = products
         self.name = name
         self.description = description
 
     def add_product(self, new_product: Product):
-        # не вижу быстрее по скорости решения, чем перебор массива. В любом случае нужен перебор
         for i in range(0, len(self.__products)):
             if self.__products[i].name == new_product.name:
                 self.__products[i].quantity += new_product.quantity
@@ -30,8 +29,17 @@ class Category:
                     self.__products[i].price = new_product.price
                 return
         self.__products.append(new_product)
-        Category.products_count += 1
+        Category.products_quantity += 1
 
     @property
     def products(self):
-        return [f"{prd.name}, {prd.price} руб. Остаток: {prd.quantity} шт." for prd in self.__products]
+        return [str(prd) for prd in self.__products]
+
+    def __len__(self):
+        prd_count = 0
+        for prd in self.__products:
+            prd_count += len(prd)
+        return prd_count
+
+    def __str__(self):
+        return f"Название: {self.name}, количество продуктов: {self.len()} шт."
