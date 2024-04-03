@@ -50,4 +50,4 @@ class Category:
         return prd_count
 
     def __str__(self):
-        return f"Название: {self.name}, количество продуктов: {self.len()} шт."
+        return f"Название: {self.name}, количество продуктов: {self.__len__()} шт."
