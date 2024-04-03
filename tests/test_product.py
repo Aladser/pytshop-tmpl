@@ -1,5 +1,5 @@
 import pytest
-from classes import Product
+from src import Product
 
 
 @pytest.fixture
@@ -41,6 +41,6 @@ def test_create(product):
 
 
 def test_add():
-    prd = Product(name='Хлеб', price=5, quantity=5, description="товар")
-    other = Product(name='Хлеб', price=25, quantity=3, description="товар")
+    prd = Product(name='Хлеб 1', price=5, quantity=5, description="товар 1")
+    other = Product(name='Хлеб 2', price=25, quantity=3, description="товар 2")
     assert prd + other == 100

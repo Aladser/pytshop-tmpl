@@ -22,15 +22,15 @@ class Product:
         return cls(**prd_obj)
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self.__name
 
     @property
-    def description(self):
+    def description(self) -> str:
         return self.__description
 
     @property
-    def price(self):
+    def price(self) -> float:
         return self.__price
 
     @price.setter
@@ -46,7 +46,7 @@ class Product:
             raise ValueError('Цена должна быть больше нуля')
 
     @property
-    def quantity(self):
+    def quantity(self) -> int:
         return self.__quantity
 
     @quantity.setter
@@ -56,11 +56,11 @@ class Product:
         else:
             raise ValueError('Количество не может быть отрицательным числом')
 
-    def __add__(self, other):
-        return self.price * self.quantity + other.price * other.quantity
+    def __add__(self, other) -> float:
+        return self.__price * self.__quantity + other.price * other.quantity
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.__name}, {self.__price} руб. Остаток: {self.__quantity} шт."
 
-    def __len__(self):
+    def __len__(self) -> int:
         return self.__quantity
