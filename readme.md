@@ -4,7 +4,7 @@
     * ``Product`` - класс продукта
     * ``Category`` - класс категории.  Список продуктов - список элементов класса Product
     * ``CategoryProductRange`` - итератор продуктов категории
- - + ``tests``
++ ``tests``
     * ``test_product`` - тест пррдукта
     * ``test_category`` - тест категории
     * `test_ctgprd_iterator` - тест итератора продуктов категории
