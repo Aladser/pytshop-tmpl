@@ -1,10 +1,10 @@
 import pytest
-from src import Product, Smartphone, Grass
+from classes import Product, Smartphone, Grass
 
 
 @pytest.fixture
 def product():
-    return Product(name='Хлеб', price=10, quantity=5, description="товар")
+    return Product(name='Хлеб', description="товар", price=10, quantity=5)
 
 
 def test_init(product):
@@ -41,8 +41,8 @@ def test_create(product):
 
 
 def test_add():
-    prd = Product(name='Хлеб 1', price=5, quantity=5, description="товар 1")
-    other = Product(name='Хлеб 2', price=25, quantity=3, description="товар 2")
+    prd = Product(name='Хлеб 1', description="товар 1", price=5, quantity=5)
+    other = Product(name='Хлеб 2', description="товар 2", price=25, quantity=3)
     assert prd + other == 100
 
 

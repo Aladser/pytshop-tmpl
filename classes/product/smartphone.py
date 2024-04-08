@@ -1,4 +1,4 @@
-from src.product import Product
+from classes.product.product import Product
 
 
 class Smartphone(Product):
@@ -8,21 +8,21 @@ class Smartphone(Product):
     color: str
 
     def __init__(self,
-                 name: str, price: float, quantity: int, description: str,
+                 name: str, description: str, price: float, quantity: int,
                  perfomance: str, model: str, RAM: str, color: str
                  ):
         """
         Смартфон
         :param name: имя
+        :param description: описание
         :param price: цена
         :param quantity: количество
-        :param description: описание
         :param perfomance: проивзодительность
         :param model: модель
         :param RAM: ОЗУ
         :param color: цвет
         """
-        super().__init__(name, price, quantity, description)
+        super().__init__(name, description, price, quantity)
         self.perfomance = perfomance
         self.model = model
         self.RAM = RAM

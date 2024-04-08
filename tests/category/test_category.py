@@ -1,5 +1,5 @@
 import pytest
-from src import Category, Product
+from classes import Category, Product
 
 
 @pytest.fixture
@@ -11,7 +11,7 @@ def products():
 
 @pytest.fixture
 def category(products):
-    return Category('еда', products, 'здесь должна быть реклама')
+    return Category('еда', 'здесь должна быть реклама', products)
 
 
 def test_init(category, products):

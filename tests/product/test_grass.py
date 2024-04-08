@@ -1,13 +1,13 @@
 import pytest
-from src import Grass
+from classes import Grass
 
 
 def test_init():
     params = {
         'name': 'газонная',
+        'description': 'городская',
         'price': 10,
         'quantity': 5,
-        'description': 'городская',
         'country_manufacturer': 'Россия',
         'germination_period': '1 year',
         'color': 'зеленый'

@@ -1,4 +1,4 @@
-from src import Product, Category, CategoryProductRange
+from classes import Product, Category, CategoryProductRange
 import pytest
 
 
@@ -13,7 +13,7 @@ def products():
 
 def test_iterator(products):
     products_str = [*products]
-    ctg = Category('aaaa', products, "")
+    ctg = Category('aaaa', "", products)
     cp_iterator = CategoryProductRange(ctg)
     print()
     for i in cp_iterator:

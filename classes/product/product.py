@@ -4,7 +4,7 @@ class Product:
     __price: float
     __quantity: int
 
-    def __init__(self, name: str, price: float, quantity: int, description: str):
+    def __init__(self, name: str, description: str, price: float, quantity: int):
         """
         Товары
         :param name: имя
@@ -12,10 +12,10 @@ class Product:
         :param quantity: количество
         :param description: описание
         """
-        self.__price = price
         self.__name = name
-        self.__quantity = quantity
         self.__description = description
+        self.__price = price
+        self.__quantity = quantity
 
     @classmethod
     def create(cls, prd_obj: dict):

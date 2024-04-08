@@ -1,14 +1,14 @@
-from src.product import Product
+from classes.product.product import Product
 
 
 class Category:
     quantity = 0
     products_quantity = 0
-    __products: list
     __name: str
     __description: str
+    __products: list
 
-    def __init__(self, name: str, products: list, description: str):
+    def __init__(self, name: str, description: str, products: list):
         """
         Категория
         :param name: имя
@@ -17,9 +17,9 @@ class Category:
         """
         Category.quantity += 1
         Category.products_quantity += len(products)
-        self.__products = products
         self.__name = name
         self.__description = description
+        self.__products = products
 
     @property
     def name(self) -> str:
