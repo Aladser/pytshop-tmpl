@@ -1,8 +1,10 @@
 import pytest
 from classes import Category, Product
 
+
 class TestCls:
     pass
+
 
 @pytest.fixture
 def products():
