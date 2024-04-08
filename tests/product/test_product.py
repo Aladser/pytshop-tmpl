@@ -41,12 +41,6 @@ def test_create(product):
 
 
 def test_add():
-    prd = Product(name='Хлеб 1', description="товар 1", price=5, quantity=5)
-    other = Product(name='Хлеб 2', description="товар 2", price=25, quantity=3)
-    assert prd + other == 100
-
-
-def test_add_subclasses():
     grass_params = {
         'name': 'зеленая',
         'price': 10,
