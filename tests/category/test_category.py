@@ -1,5 +1,5 @@
 import pytest
-from classes import Category, Product
+from classes import Category, Product, Grass
 
 
 class TestCls:
@@ -29,12 +29,26 @@ def test_init(category, products):
 
 
 def test_work(category):
+    bread = Product(name='Хлеб', price=5, quantity=1, description='Товар 1')
+    params = {
+        'name': 'газонная',
+        'description': 'городская',
+        'price': 10,
+        'quantity': 1,
+        'country_manufacturer': 'Россия',
+        'germination_period': '1 year',
+        'color': 'зеленый'
+    }
+    grass = Grass(**params)
+
     # добавление товара
-    category.add_product(Product(name='Хлеб', price=5, quantity=1, description='Товар 1'))
+    category.add_product(bread)
     assert Category.products_quantity == 2
+    category.add_product(grass)
+    assert Category.products_quantity == 3
     with pytest.raises(Exception):
         category.add_product(TestCls())
     # дубль товара
-    prd = Product(name='Хлеб1', price=5, quantity=1, description='Товар 1')
-    category.add_product(prd)
+    category.add_product(bread)
     assert Category.products_quantity == 3
+    category.add_product(TestCls())
