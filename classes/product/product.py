@@ -4,7 +4,7 @@ class Product:
     __price: float
     __quantity: int
 
-    def __init__(self, name: str, price: float, quantity: int, description: str):
+    def __init__(self, name: str, description: str, price: float, quantity: int):
         """
         Товары
         :param name: имя
@@ -12,10 +12,10 @@ class Product:
         :param quantity: количество
         :param description: описание
         """
-        self.__price = price
         self.__name = name
-        self.__quantity = quantity
         self.__description = description
+        self.__price = price
+        self.__quantity = quantity
 
     @classmethod
     def create(cls, prd_obj: dict):
@@ -57,7 +57,10 @@ class Product:
             raise ValueError('Количество не может быть отрицательным числом')
 
     def __add__(self, other) -> float:
-        return self.__price * self.__quantity + other.price * other.quantity
+        if isinstance(other, type(self)):
+            return self.__price * self.__quantity + other.price * other.quantity
+        else:
+            raise TypeError('Объекты разных классов')
 
     def __str__(self) -> str:
         return f"{self.__name}, {self.__price} руб. Остаток: {self.__quantity} шт."

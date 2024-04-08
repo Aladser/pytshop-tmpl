@@ -1,14 +1,14 @@
-from src.product import Product
+from classes.product.product import Product
 
 
 class Category:
     quantity = 0
     products_quantity = 0
-    __products: list
     __name: str
     __description: str
+    __products: list
 
-    def __init__(self, name: str, products: list, description: str):
+    def __init__(self, name: str, description: str, products: list):
         """
         Категория
         :param name: имя
@@ -17,9 +17,9 @@ class Category:
         """
         Category.quantity += 1
         Category.products_quantity += len(products)
-        self.__products = products
         self.__name = name
         self.__description = description
+        self.__products = products
 
     @property
     def name(self) -> str:
@@ -29,7 +29,10 @@ class Category:
     def description(self) -> str:
         return self.__description
 
-    def add_product(self, new_product: Product):
+    def add_product(self, new_product):
+        if not issubclass(type(new_product), Product):
+            raise Exception(f"Объект {new_product} должен быть экземляром класс Product или его наследника")
+
         for i in range(0, len(self.__products)):
             if self.__products[i].name == new_product.name:
                 self.__products[i].quantity += new_product.quantity

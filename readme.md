@@ -1,11 +1,19 @@
 # Шаблон интернет-магазина
 
-+ ``src``
-    * ``Product`` - класс продукта
-    * ``Category`` - класс категории.  Список продуктов - список элементов класса Product
-    * ``CategoryProductRange`` - итератор продуктов категории
++ ``classes``
+    * ``product``
+      + ``Product``
+      + ``Grass``
+      + ``Smartphone``
+    * ``category``
+      + ``Category``
+      + ``CategoryProductRange``
 + ``tests``
-    * ``test_product`` - тест пррдукта
-    * ``test_category`` - тест категории
-    * `test_ctgprd_iterator` - тест итератора продуктов категории
+    * ``product``
+      + ``test_product``
+      + ``test_grass``
+      + ``test_smartphone``
+    * ``category``
+      + ``test_category``
+      + `test_ctgprd_iterator`
 + ``load_data.py`` - парсинг JSON файла и выгрузка категорий и товаров из него.
