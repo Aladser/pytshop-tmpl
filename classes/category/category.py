@@ -29,7 +29,10 @@ class Category:
     def description(self) -> str:
         return self.__description
 
-    def add_product(self, new_product: Product):
+    def add_product(self, new_product):
+        if not issubclass(type(new_product), Product):
+            raise Exception('New_product должен быть экземляром класс Product или его наследника')
+
         for i in range(0, len(self.__products)):
             if self.__products[i].name == new_product.name:
                 self.__products[i].quantity += new_product.quantity
