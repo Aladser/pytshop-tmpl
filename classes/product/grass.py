@@ -1,6 +1,7 @@
 from classes.product.product import Product
 
 
+# не вижу смысла создавать класс газонная трава. Максимум можно создать наследника класса Трава
 class Grass(Product):
     country_manufacturer: str
     germination_period: int
