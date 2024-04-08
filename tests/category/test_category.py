@@ -1,6 +1,8 @@
 import pytest
 from classes import Category, Product
 
+class TestCls:
+    pass
 
 @pytest.fixture
 def products():
@@ -26,9 +28,10 @@ def test_init(category, products):
 
 def test_work(category):
     # добавление товара
-    prd = Product(name='Хлеб', price=5, quantity=1, description='Товар 1')
-    category.add_product(prd)
+    category.add_product(Product(name='Хлеб', price=5, quantity=1, description='Товар 1'))
     assert Category.products_quantity == 2
+    with pytest.raises(Exception):
+        category.add_product(TestCls())
     # дубль товара
     prd = Product(name='Хлеб1', price=5, quantity=1, description='Товар 1')
     category.add_product(prd)
