@@ -57,7 +57,10 @@ class Product:
             raise ValueError('Количество не может быть отрицательным числом')
 
     def __add__(self, other) -> float:
-        return self.__price * self.__quantity + other.price * other.quantity
+        if isinstance(other, type(self)):
+            return self.__price * self.__quantity + other.price * other.quantity
+        else:
+            raise TypeError('Объекты разных классов')
 
     def __str__(self) -> str:
         return f"{self.__name}, {self.__price} руб. Остаток: {self.__quantity} шт."
