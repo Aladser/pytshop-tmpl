@@ -1,4 +1,7 @@
-class Product:
+from classes.product.base_product import BaseProduct
+
+
+class Product(BaseProduct):
     __name: str
     __description: str
     __price: float
