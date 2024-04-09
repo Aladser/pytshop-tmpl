@@ -57,7 +57,7 @@ class Product:
             raise ValueError('Количество не может быть отрицательным числом')
 
     def __add__(self, other) -> float:
-        if isinstance(other, type(self)):
+        if type(self) == type(other):
             return self.__price * self.__quantity + other.price * other.quantity
         else:
             raise TypeError('Объекты разных классов')
