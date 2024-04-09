@@ -1,4 +1,5 @@
+main.py
 .idea
-venv
+.venv
 classes/__pycache__
 tests/__pycache__
