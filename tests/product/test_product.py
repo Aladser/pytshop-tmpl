@@ -40,7 +40,7 @@ def test_create(product):
     assert product.description == description
 
 
-def test_add():
+def test_add(product):
     grass_params = {
         'name': 'зеленая',
         'price': 10,
@@ -63,12 +63,11 @@ def test_add():
     grass_1 = Grass(**grass_params)
     grass_2 = Grass(**grass_params)
     smartphone = Smartphone(**smrt_params)
-    prd = Product(name='Хлеб', description="товар", price=20, quantity=5)
     # один тип
     assert grass_1 + grass_2 == 100
     # разные типы
-    with pytest.raises(Exception):
+    with pytest.raises(TypeError):
         grass_1 + smartphone
     # родитель и наследник
-    with pytest.raises(Exception):
-        assert prd + grass_1 == 150
+    with pytest.raises(TypeError):
+        product + grass_1
