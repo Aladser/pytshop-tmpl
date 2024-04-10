@@ -8,6 +8,7 @@
     * ``CategoryProductRange``
     * ``Order``
     * ``product``
+      + ``BaseProduct`` - абстрактный класс продукта
       + ``Product``
       + ``Grass``
       + ``Smartphone``
@@ -16,7 +17,6 @@
     * ``test_ctgprd_iterator``
     * ``test_order``
     * ``product``
-      + ``BaseProduct`` - абстрактный класс продукта
       + ``test_product``
       + ``test_grass``
       + ``test_smartphone``
