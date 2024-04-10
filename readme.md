@@ -7,7 +7,7 @@
       + ``Smartphone``
     * ``Category``
     * ``CategoryProductRange``
-    * ``MixingCondoleLog`` - вывод информации о созданном объекте
+    * ``MixingLog`` - вывод информации о созданном объекте
 + ``tests``
     * ``product``
       + ``test_product``
