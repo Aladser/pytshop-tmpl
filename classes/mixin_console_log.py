@@ -1,8 +1,10 @@
 class MixinConsoleLog:
+    """ Вывод информации в консоль о том, что был создан объект"""
     def __init__(self):
         self.log()
 
-    def log(self):
+    def log(self) -> str:
+        """ Класс ([атрибуты])"""
         param_values = ""
         for value in self.__dict__.values():
             param_values += f"'{value}', " if isinstance(value, str) else f"{value}, "

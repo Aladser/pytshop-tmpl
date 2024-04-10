@@ -12,6 +12,8 @@ def test_work():
     print()
     prd = Product(**prd_params)
     assert prd.name == prd_params['name']
+
+    # grass
     params = {
         'name': 'газонная',
         'description': 'городская',
@@ -22,4 +24,6 @@ def test_work():
         'color': 'зеленый'
     }
     grass = Grass(**params)
-    ctg = Category('еда', 'здесь должна быть реклама', [])
+
+    # category
+    ctg = Category('еда', 'здесь должна быть реклама', [prd])
