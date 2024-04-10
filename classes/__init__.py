@@ -1,5 +1,9 @@
-from classes.product import product, grass, smartphone, base_product
-from classes import mixin_log, category, category_product_range
+from classes.general import str_imp, mixin_log
+from classes.product import base_product, product, grass, smartphone
+from classes import category, category_product_range, order
+
+StrImpl = str_imp.StrImpl
+MixinLog = mixin_log.MixinLog
 
 Product = product.Product
 Smartphone = smartphone.Smartphone
@@ -8,4 +12,4 @@ BaseProduct = base_product.BaseProduct
 
 Category = category.Category
 CategoryProductRange = category_product_range.CategoryProductRange
-MixinLog = mixin_log.MixinLog
+Order = order.Order

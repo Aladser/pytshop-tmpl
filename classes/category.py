@@ -1,8 +1,9 @@
 from classes.product.product import Product
-from classes.mixin_log import MixinLog
+from classes.general.mixin_log import MixinLog
+from classes.general.str_imp import StrImpl
 
 
-class Category(MixinLog):
+class Category(StrImpl, MixinLog):
     quantity = 0
     products_quantity = 0
     __name: str
