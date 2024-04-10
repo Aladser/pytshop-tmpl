@@ -51,4 +51,3 @@ def test_work(category):
     # дубль товара
     category.add_product(bread)
     assert Category.products_quantity == 3
-    category.add_product(TestCls())
