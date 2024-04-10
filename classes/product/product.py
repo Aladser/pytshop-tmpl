@@ -1,7 +1,8 @@
 from classes.product.base_product import BaseProduct
+from classes.mixin_console_log import MixinConsoleLog
 
 
-class Product(BaseProduct):
+class Product(BaseProduct, MixinConsoleLog):
     __name: str
     __description: str
     __price: float
@@ -15,6 +16,7 @@ class Product(BaseProduct):
         :param quantity: количество
         :param description: описание
         """
+        super().__init__()
         self.__name = name
         self.__description = description
         self.__price = price
@@ -65,8 +67,8 @@ class Product(BaseProduct):
         else:
             raise TypeError('Объекты разных классов')
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.__name}, {self.__price} руб. Остаток: {self.__quantity} шт."
 
-    def __len__(self) -> int:
+    def __len__(self):
         return self.__quantity
