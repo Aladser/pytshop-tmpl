@@ -1,6 +1,6 @@
 from classes.product.product import Product
-from classes.general.mixin_log import MixinLog
-from classes.general.str_imp import StrImpl
+from general.mixin_log import MixinLog
+from general.str_imp import StrImpl
 
 
 class Order(StrImpl, MixinLog):
