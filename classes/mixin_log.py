@@ -10,4 +10,4 @@ class MixinLog:
             param_values += f"{key}:{value}, "
         if len(self.__dict__.values()) > 0:
             param_values = param_values[:-2]
-        return f"Создан объект {self.__class__.__name__}({param_values})"
+        return f"{self.__class__.__name__}({param_values})"
