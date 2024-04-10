@@ -17,21 +17,21 @@ def product(prd_params):
     return Product(**prd_params)
 
 
-def test_init(product, prd_params):
+def test_init(prd_params):
     prd = Product(**prd_params)
     assert prd.name == prd_params['name']
-    assert product.price == prd_params['price']
-    assert product.quantity == prd_params['quantity']
-    assert product.description == prd_params['description']
-    print(f"\n{product}", end='')
+    assert prd.price == prd_params['price']
+    assert prd.quantity == prd_params['quantity']
+    assert prd.description == prd_params['description']
+    print(f"\n{prd}", end='')
 
 
-def test_create(product, prd_params):
+def test_create(prd_params):
     prd = Product.create(prd_params)
     assert prd.name == prd_params['name']
-    assert product.price == prd_params['price']
-    assert product.quantity == prd_params['quantity']
-    assert product.description == prd_params['description']
+    assert prd.price == prd_params['price']
+    assert prd.quantity == prd_params['quantity']
+    assert prd.description == prd_params['description']
 
 
 def test_price(product):
