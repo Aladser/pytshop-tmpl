@@ -8,4 +8,4 @@ BaseProduct = base_product.BaseProduct
 
 Category = category.Category
 CategoryProductRange = category_product_range.CategoryProductRange
-MixinConsoleLog = mixin_log.MixinLog
+MixinLog = mixin_log.MixinLog
