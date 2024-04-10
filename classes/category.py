@@ -1,8 +1,8 @@
 from classes.product.product import Product
-from classes.mixin_console_log import MixinConsoleLog
+from classes.mixin_log import MixinLog
 
 
-class Category(MixinConsoleLog):
+class Category(MixinLog):
     quantity = 0
     products_quantity = 0
     __name: str

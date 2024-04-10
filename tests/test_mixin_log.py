@@ -26,4 +26,4 @@ def test_work():
     grass = Grass(**params)
 
     # category
-    ctg = Category('еда', 'здесь должна быть реклама', [prd])
+    Category('еда', 'здесь должна быть реклама', [prd, grass])

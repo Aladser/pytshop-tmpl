@@ -1,8 +1,8 @@
 from classes.product.base_product import BaseProduct
-from classes.mixin_console_log import MixinConsoleLog
+from classes.mixin_log import MixinLog
 
 
-class Product(BaseProduct, MixinConsoleLog):
+class Product(BaseProduct, MixinLog):
     __name: str
     __description: str
     __price: float
@@ -71,7 +71,7 @@ class Product(BaseProduct, MixinConsoleLog):
         return f"{self.__name}, {self.__price} руб. Остаток: {self.__quantity} шт."
 
     def __repr__(self):
-        return f"~{self.__name}, {self.__price} руб. Остаток: {self.__quantity} шт.~"
+        return self.log()
 
     def __len__(self):
         return self.__quantity
