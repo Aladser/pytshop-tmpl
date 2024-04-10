@@ -1,4 +1,4 @@
-from classes import Product, Grass
+from classes import Product, Grass, Category
 
 
 def test_work():
@@ -13,6 +13,7 @@ def test_work():
     assert prd.name == prd_params['name']
     print()
     prd.log()
+
     # наследник product
     grass_params = {
         'name': 'газонная',
@@ -25,3 +26,6 @@ def test_work():
     }
     grass = Grass(**grass_params)
     grass.log()
+    # категория
+    ctg = Category('еда', 'здесь должна быть реклама', [prd, grass])
+    ctg.log()
