@@ -26,6 +26,7 @@ def test_init(category, products):
     assert Category.quantity == 1
     assert len(category) == 12
     assert category.products == ['Хлеб, 5 руб. Остаток: 12 шт.']
+    assert str(category) == 'Название: еда, количество продуктов: 12 шт.'
 
 
 def test_work(category):
@@ -51,4 +52,3 @@ def test_work(category):
     # дубль товара
     category.add_product(bread)
     assert Category.products_quantity == 3
-    category.add_product(TestCls())

@@ -1,7 +1,9 @@
 from classes.product.product import Product
+from general.mixin_log import MixinLog
+from general.str_imp import StrImpl
 
 
-class Category:
+class Category(StrImpl, MixinLog):
     quantity = 0
     products_quantity = 0
     __name: str
@@ -20,6 +22,7 @@ class Category:
         self.__name = name
         self.__description = description
         self.__products = products
+        super().__init__()
 
     @property
     def name(self) -> str:

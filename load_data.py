@@ -13,7 +13,7 @@ if __name__ == '__main__':
         for prd_item in item['products']:
             product = Product(**prd_item)
             products_list.append(product)
-        category = Category(item['name'], products_list, item['description'])
+        category = Category(item['name'], item['description'], products_list)
         categories.append(category)
 
     # вывод полученных данных
@@ -21,5 +21,5 @@ if __name__ == '__main__':
         print(f"Название: {ctg.name}")
         print(f"Описание: {ctg.description}")
         print(f"Товары (количество:{len(ctg)}):")
-        [print(prd) for prd in ctg.products]
+        [print(f"  {prd}") for prd in ctg.products]
         print('-----')

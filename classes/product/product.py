@@ -1,4 +1,8 @@
-class Product:
+from classes.product.base_product import BaseProduct
+from general.mixin_log import MixinLog
+
+
+class Product(BaseProduct, MixinLog):
     __name: str
     __description: str
     __price: float
@@ -16,6 +20,7 @@ class Product:
         self.__description = description
         self.__price = price
         self.__quantity = quantity
+        super().__init__()
 
     @classmethod
     def create(cls, prd_obj: dict):
@@ -62,8 +67,11 @@ class Product:
         else:
             raise TypeError('Объекты разных классов')
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.__name}, {self.__price} руб. Остаток: {self.__quantity} шт."
 
-    def __len__(self) -> int:
+    def __repr__(self):
+        return self.get_props()
+
+    def __len__(self):
         return self.__quantity

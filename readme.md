@@ -1,19 +1,24 @@
 # Шаблон интернет-магазина
 
++ ``general``
+    * ``MixingLog`` - вывод информации о созданном объекте
+    * ``StrImpl`` - абстрактный класс метода ``__str__``
 + ``classes``
+    * ``Category``
+    * ``CategoryProductRange``
+    * ``Order``
     * ``product``
       + ``Product``
       + ``Grass``
       + ``Smartphone``
-    * ``category``
-      + ``Category``
-      + ``CategoryProductRange``
 + ``tests``
+    * ``test_category``
+    * ``test_ctgprd_iterator``
+    * ``test_order``
     * ``product``
+      + ``BaseProduct`` - абстрактный класс продукта
       + ``test_product``
       + ``test_grass``
       + ``test_smartphone``
-    * ``category``
-      + ``test_category``
-      + `test_ctgprd_iterator`
+    * ``test_mixing``
 + ``load_data.py`` - парсинг JSON файла и выгрузка категорий и товаров из него.
