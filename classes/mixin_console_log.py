@@ -1,4 +1,7 @@
 class MixinConsoleLog:
+    def __init__(self):
+        print(self.__dict__.values())
+
     def log(self):
         param_values = ''
         for value in self.__dict__.values():

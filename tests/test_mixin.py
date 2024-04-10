@@ -2,17 +2,17 @@ from classes import Product, Grass, Category
 
 
 def test_work():
-    #product
+    # product
     prd_params = {
         'name': 'Хлеб',
         'description': "товар",
         'price': 10,
         'quantity': 5
     }
+    print('')
     prd = Product(**prd_params)
-    assert prd.name == prd_params['name']
-    print()
     prd.log()
+    assert prd.name == prd_params['name']
 
     # наследник product
     grass_params = {
@@ -24,8 +24,9 @@ def test_work():
         'germination_period': '1 year',
         'color': 'зеленый'
     }
+    print('----------')
     grass = Grass(**grass_params)
     grass.log()
-    # категория
+    print('----------')
     ctg = Category('еда', 'здесь должна быть реклама', [prd, grass])
     ctg.log()
