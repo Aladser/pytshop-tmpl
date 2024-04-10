@@ -16,11 +16,11 @@ class Product(BaseProduct, MixinConsoleLog):
         :param quantity: количество
         :param description: описание
         """
-        super().__init__()
         self.__name = name
         self.__description = description
         self.__price = price
         self.__quantity = quantity
+        super().__init__()
 
     @classmethod
     def create(cls, prd_obj: dict):
@@ -71,7 +71,7 @@ class Product(BaseProduct, MixinConsoleLog):
         return f"{self.__name}, {self.__price} руб. Остаток: {self.__quantity} шт."
 
     def __repr__(self):
-        return f"-|{self.__name}, {self.__price} руб. Остаток: {self.__quantity} шт.|-"
+        return f"|{self.__name}, {self.__price} руб. Остаток: {self.__quantity} шт.|"
 
     def __len__(self):
         return self.__quantity

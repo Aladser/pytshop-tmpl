@@ -1,9 +1,9 @@
 class MixinConsoleLog:
     def __init__(self):
-        print(self.__dict__.values())
+        self.log()
 
     def log(self):
-        param_values = ''
+        param_values = ""
         for value in self.__dict__.values():
             param_values += f"'{value}', " if type(value) == str else f"{value}, "
         if len(self.__dict__.values()) > 0:

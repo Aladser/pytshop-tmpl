@@ -16,12 +16,12 @@ class Category(MixinConsoleLog):
         :param products: товары
         :param description: описание
         """
-        super().__init__()
         Category.quantity += 1
         Category.products_quantity += len(products)
         self.__name = name
         self.__description = description
         self.__products = products
+        super().__init__()
 
     @property
     def name(self) -> str:

@@ -9,13 +9,10 @@ def test_work():
         'price': 10,
         'quantity': 5
     }
-    print('')
+    print()
     prd = Product(**prd_params)
-    prd.log()
     assert prd.name == prd_params['name']
-
-    # наследник product
-    grass_params = {
+    params = {
         'name': 'газонная',
         'description': 'городская',
         'price': 10,
@@ -24,9 +21,5 @@ def test_work():
         'germination_period': '1 year',
         'color': 'зеленый'
     }
-    print('----------')
-    grass = Grass(**grass_params)
-    grass.log()
-    print('----------')
-    ctg = Category('еда', 'здесь должна быть реклама', [prd, grass])
-    ctg.log()
+    grass = Grass(**params)
+    ctg = Category('еда', 'здесь должна быть реклама', [])
