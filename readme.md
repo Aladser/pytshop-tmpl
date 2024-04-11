@@ -1,16 +1,16 @@
 # Шаблон интернет-магазина
 
-+ ``general``
++ *general*
     * ``MixingLog`` - вывод информации о созданном объекте
     * ``StrImpl`` - абстрактный класс метода ``__str__``
-+ ``classes``
++ *classes*
     * ``Category``
     * ``CategoryProductRange``
     * ``Order``
-    * ``product``
+    * *product*
       + ``BaseProduct`` - абстрактный класс продукта
       + ``Product``
       + ``Grass``
       + ``Smartphone``
-+ ``tests``
-+ ``load_data.py`` - парсинг JSON файла и выгрузка категорий и товаров из него.
++ *tests*
++ *load_data.py* - парсинг JSON файла и выгрузка категорий и товаров из него.
