@@ -1,6 +1,6 @@
 import pytest
 from classes import Category, CategoryProductRange
-from classes.product.product import Product
+from classes.product import Product
 
 
 @pytest.fixture()

@@ -1,4 +1,5 @@
-from classes.product.smartphone import Smartphone
+from classes.product import Smartphone
+
 
 def test_init():
     params = {

@@ -1,4 +1,4 @@
-from classes.product.grass import Grass
+from classes.product import Grass
 
 
 def test_init():
