@@ -1,5 +1,4 @@
-import pytest
-from classes import Grass
+from classes.product.grass import Grass
 
 
 def test_init():

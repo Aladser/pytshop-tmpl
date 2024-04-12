@@ -1,5 +1,4 @@
-import pytest
-from unsigned_int.unsigned_int import UnsignedInt
+from libs.unsigned_int.unsigned_int import UnsignedInt
 
 
 def test_work():
