@@ -26,7 +26,3 @@ class BaseProduct(ABC, IsNaturalNumber):
     @abstractmethod
     def __add__(self, other) -> float:
         pass
-
-    @abstractmethod
-    def __len__(self):
-        pass
