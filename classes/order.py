@@ -1,5 +1,5 @@
 from classes.product import Product
-from general import MixinLog
+from general import MixinLog, IsNaturalNumber
 
 
 class Order(MixinLog):
@@ -8,6 +8,7 @@ class Order(MixinLog):
 
     def __init__(self, product: Product, quantity: int):
         self.__product = product
+        IsNaturalNumber.verify_natural_number(quantity)
         self.__quantity = quantity
         super().__init__()
 

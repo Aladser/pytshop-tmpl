@@ -2,7 +2,7 @@ from classes.product.base_product import BaseProduct
 from general import MixinLog, IsNaturalNumber
 
 
-class Product(BaseProduct, IsNaturalNumber, MixinLog):
+class Product(BaseProduct, MixinLog):
     __name: str
     __description: str
     __price: float
@@ -19,7 +19,7 @@ class Product(BaseProduct, IsNaturalNumber, MixinLog):
         self.__name = name
         self.__description = description
         self.__price = price
-        self.verify_natural_number(quantity)
+        IsNaturalNumber.verify_natural_number(quantity)
         self.__quantity = quantity
         super().__init__()
 
