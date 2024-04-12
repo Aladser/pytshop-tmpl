@@ -1,4 +1,4 @@
-from classes import Smartphone
+from classes.product import Smartphone
 
 
 def test_init():

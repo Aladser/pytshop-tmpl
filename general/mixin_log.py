@@ -1,8 +1,5 @@
 class MixinLog:
     """ Вывод информации в консоль о том, что был создан объект"""
-    def __init__(self):
-        self.log()
-
     def get_props(self) -> str:
         """ Класс ([атрибуты])"""
         param_values = ""
