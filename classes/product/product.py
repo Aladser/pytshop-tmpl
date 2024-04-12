@@ -1,5 +1,5 @@
 from classes.product.base_product import BaseProduct
-from general.mixin_log import MixinLog
+from general import MixinLog
 
 
 class Product(BaseProduct, MixinLog):
