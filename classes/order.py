@@ -1,8 +1,8 @@
 from classes.product import Product
-from general import MixinLog, StrImpl
+from general import MixinLog
 
 
-class Order(StrImpl, MixinLog):
+class Order(MixinLog):
     __product: Product
     __quantity: int
 

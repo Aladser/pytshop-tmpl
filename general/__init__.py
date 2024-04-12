@@ -1,4 +1,4 @@
-from general import str_imp, mixin_log
+from general import log_mixin, is_natural_number
 
-StrImpl = str_imp.StrImpl
-MixinLog = mixin_log.MixinLog
+MixinLog = log_mixin.LogMixin
+IsNaturalNumber = is_natural_number.IsNaturalNumber
