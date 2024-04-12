@@ -2,7 +2,7 @@
 
 + *general*
     * ``MixingLog`` - вывод информации о созданном объекте
-    * ``StrImpl`` - абстрактный класс метода ``__str__``
+    * ``IsNaturalNumber`` - проверка числа, является ли натуральным
 + *classes*
     * ``Category``
     * ``CategoryProductRange``
