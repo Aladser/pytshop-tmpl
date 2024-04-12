@@ -12,5 +12,4 @@
       + ``Product``
       + ``Grass``
       + ``Smartphone``
-+ *tests*
 + *load_data.py* - парсинг JSON файла и выгрузка категорий и товаров из него.
