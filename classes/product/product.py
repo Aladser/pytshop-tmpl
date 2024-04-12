@@ -1,5 +1,5 @@
 from classes.product.base_product import BaseProduct
-from general import MixinLog
+from general import MixinLog, IsNaturalNumber
 
 
 class Product(BaseProduct, MixinLog):
@@ -19,6 +19,7 @@ class Product(BaseProduct, MixinLog):
         self.__name = name
         self.__description = description
         self.__price = price
+        IsNaturalNumber.verify_natural_number(quantity)
         self.__quantity = quantity
         super().__init__()
 

@@ -1,4 +1,4 @@
-class MixinLog:
+class LogMixin:
     """ Вывод информации в консоль о том, что был создан объект"""
     def get_props(self) -> str:
         """ Класс ([атрибуты])"""
