@@ -2,4 +2,4 @@ main.py
 .idea
 .venv
 classes/__pycache__
-tests/__pycache__
+general/tests/__pycache__

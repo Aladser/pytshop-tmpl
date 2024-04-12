@@ -1,5 +1,6 @@
 import pytest
-from classes import Category, Product, Grass
+from classes import Category
+from classes.product import Product, Grass
 
 
 class TestCls:

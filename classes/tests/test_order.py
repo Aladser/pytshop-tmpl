@@ -1,4 +1,5 @@
-from classes import Product, Order
+from classes import Order
+from classes.product import Product
 
 
 def test_init():

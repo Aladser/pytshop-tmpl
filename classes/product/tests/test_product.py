@@ -1,5 +1,5 @@
 import pytest
-from classes import Product, Smartphone, Grass
+from classes.product import Product, Grass, Smartphone
 
 
 @pytest.fixture
