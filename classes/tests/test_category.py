@@ -4,7 +4,8 @@ from classes.product import Product, Grass
 
 
 class TestCls:
-    pass
+    def __str__(self):
+        return 'TestCls'
 
 
 @pytest.fixture()
@@ -69,8 +70,9 @@ def test_work(category):
     assert Category.products_quantity == 3
 
     # добавление непродукта
-    with pytest.raises(Exception):
-        category.add_product(TestCls())
+    test_cls = TestCls()
+    with pytest.raises(Exception, match=f"Объект {test_cls} должен быть экземляром класса Product или его наследника"):
+        category.add_product(test_cls)
 
     # дубль товара
     category.add_product(bread)
