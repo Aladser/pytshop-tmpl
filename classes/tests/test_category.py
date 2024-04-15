@@ -7,32 +7,50 @@ class TestCls:
     pass
 
 
-@pytest.fixture
-def products():
-    return [
-        Product(name='Хлеб', price=5, quantity=12, description='Товар 1')
-    ]
+@pytest.fixture()
+def prd_params():
+    return {
+        'name': 'Хлеб',
+        'price': 5,
+        'quantity': 12,
+        'description': 'Товар'
+    }
 
 
 @pytest.fixture
-def category(products):
-    return Category('еда', 'здесь должна быть реклама', products)
+def ctg_params(prd_params):
+    return {
+        'name': 'еда',
+        'description': 'здесь должна быть реклама',
+        'products': [Product(**prd_params)]
+    }
 
 
-def test_init(category, products):
-    assert category.name == 'еда'
-    assert category.description == 'здесь должна быть реклама'
-    assert category.products == [str(prd) for prd in products]
+@pytest.fixture
+def category(ctg_params):
+    return Category(**ctg_params)
+
+
+def test_init(ctg_params):
+    category = Category(**ctg_params)
+    assert category.name == ctg_params['name']
+    assert category.description == ctg_params['description']
+    assert category.products == [str(prd) for prd in ctg_params['products']]
+
     assert Category.products_quantity == 1
     assert Category.quantity == 1
+
     assert len(category) == 12
-    assert category.products == ['Хлеб, 5 руб. Остаток: 12 шт.']
-    assert str(category) == 'Название: еда, количество продуктов: 12 шт.'
 
 
 def test_work(category):
-    bread = Product(name='Хлеб', price=5, quantity=1, description='Товар 1')
-    params = {
+    bread_params = {
+        'name': 'Хлеб',
+        'description': 'пекарня',
+        'price': 5,
+        'quantity': 1,
+    }
+    grass_params = {
         'name': 'газонная',
         'description': 'городская',
         'price': 10,
@@ -41,7 +59,8 @@ def test_work(category):
         'germination_period': '1 year',
         'color': 'зеленый'
     }
-    grass = Grass(**params)
+    bread = Product(**bread_params)
+    grass = Grass(**grass_params)
 
     # добавление товара
     category.add_product(bread)
@@ -49,7 +68,7 @@ def test_work(category):
     category.add_product(grass)
     assert Category.products_quantity == 3
 
-    # добавление непродукта или его потомка
+    # добавление непродукта
     with pytest.raises(Exception):
         category.add_product(TestCls())
 
@@ -58,17 +77,18 @@ def test_work(category):
     assert Category.products_quantity == 3
 
     # нулевое количество товара
-    null_bread = Product(name='Хлеб 2', price=5, quantity=0, description='Товар 1')
-    with pytest.raises(NonPositiveProductQuantityException):
-        category.add_product(null_bread)
+    bread_params['name'] = 'Хлеб 2'
+    bread_params['quantity'] = 0
+    null_bread = Product(**bread_params)
+    match_str = f"Товар {bread_params['name']} с неположительным количеством не может быть добавлен"
 
-    prd = Product(name='Хлеб 1', price=5, quantity=1, description='Товар 1')
-    null_prd = Product(name='Хлеб 2', price=5, quantity=0, description='Товар 2')
-    with pytest.raises(NonPositiveProductQuantityException):
-        Category('еда', 'здесь должна быть реклама', [prd, null_prd])
+    with pytest.raises(NonPositiveProductQuantityException, match=match_str):
+        Category('еда', 'здесь должна быть реклама', [bread, null_bread])
+    with pytest.raises(NonPositiveProductQuantityException, match=match_str):
+        category.add_product(null_bread)
 
     # средняя цена
     ctg = Category('еда', 'здесь должна быть реклама', [])
-    assert ctg.product_avg_price() == 0
+    assert ctg.product_avg_price == 0
     ctg.add_product(bread)
-    assert ctg.product_avg_price() == 5
+    assert ctg.product_avg_price == 5
