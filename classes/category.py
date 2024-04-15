@@ -22,8 +22,7 @@ class Category(StrImpl, MixinLog):
         self.__name = name
         self.__description = description
         for prd in products:
-            if prd.quantity == 0:
-                raise ValueError(f"Товар {prd.name} с нулевым количеством не может быть добавлен:")
+            self.verify_product_quantity(prd)
         self.__products = products
         super().__init__()
 
@@ -42,8 +41,7 @@ class Category(StrImpl, MixinLog):
     def add_product(self, new_product):
         if not issubclass(type(new_product), Product):
             raise Exception(f"Объект {new_product} должен быть экземляром класса Product или его наследника")
-        if new_product.quantity == 0:
-            raise ValueError('Товар с нулевым количеством не может быть добавлен')
+        self.verify_product_quantity(new_product)
 
         for i in range(0, len(self.__products)):
             if self.__products[i].name == new_product.name:
@@ -66,6 +64,14 @@ class Category(StrImpl, MixinLog):
             print(e)
         finally:
             return avg_price
+
+    @staticmethod
+    def verify_product_quantity(product: Product):
+        """проверить количество добавляемого продукта"""
+        if product.quantity == 0:
+            raise ValueError(f"Товар {product.name} с нулевым количеством не может быть добавлен:")
+        else:
+            return True
 
     def __len__(self) -> int:
         prd_count = 0
