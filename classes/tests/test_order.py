@@ -1,6 +1,6 @@
 from classes import Order
 from classes.product import Product
-from classes import NullProductQuantityException
+from classes import NonPositiveProductQuantityException
 
 def test_init():
     product = Product(name='Хлеб', price=5, quantity=12, description='Товар 1')
@@ -8,10 +8,10 @@ def test_init():
     assert str(order) == 'продукт: Хлеб, 5 руб. Остаток: 12 шт., количество: 3'
     # обработка нулевого количества продукта
     print()
-    for i in range(2):
+    for i in range(-1, 2):
         try:
             Order(product, i)
-        except NullProductQuantityException as e:
+        except NonPositiveProductQuantityException as e:
             print(e)
         else:
             print('Товар добавлен')
