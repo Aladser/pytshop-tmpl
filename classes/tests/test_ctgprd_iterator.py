@@ -14,7 +14,7 @@ def products():
 
 def test_iterator(products):
     products_str = [*products]
-    ctg = Category('aaaa', "", products)
+    ctg = Category('хлебушек', "", products)
     cp_iterator = CategoryProductRange(ctg)
     print()
     for i in cp_iterator:

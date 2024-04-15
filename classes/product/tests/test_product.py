@@ -17,12 +17,11 @@ def product(prd_params):
     return Product(**prd_params)
 
 
-def test_init(prd_params):
-    prd = Product(**prd_params)
-    assert prd.name == prd_params['name']
-    assert prd.price == prd_params['price']
-    assert prd.quantity == prd_params['quantity']
-    assert prd.description == prd_params['description']
+def test_init(product, prd_params):
+    assert product.name == prd_params['name']
+    assert product.price == prd_params['price']
+    assert product.quantity == prd_params['quantity']
+    assert product.description == prd_params['description']
     # отрицательное количество
     prd_params['quantity'] = -5
     with pytest.raises(ValueError):
