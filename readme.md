@@ -7,7 +7,7 @@
     * ``Category``
     * ``CategoryProductRange``
     * ``Order``
-    * ``NullProductQuantityException`` - тест нулевого числа товаров
+    * ``NullProductQuantityException`` - исключение неположительного числа товаров
     * *product*
       + ``BaseProduct`` - абстрактный класс продукта
       + ``Product``
