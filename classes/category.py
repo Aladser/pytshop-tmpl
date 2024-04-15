@@ -54,6 +54,7 @@ class Category(MixinLog):
         self.__products.append(new_product)
         Category.products_quantity += 1
 
+    @property
     def product_avg_price(self):
         """средняя цена товаров"""
         total_price = 0

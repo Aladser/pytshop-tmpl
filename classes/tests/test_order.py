@@ -1,8 +1,6 @@
-import pytest
-
-from classes import Order
+from classes import Order, NonPositiveProductQuantityException
 from classes.product import Product
-from classes import NonPositiveProductQuantityException
+
 
 def test_init():
     product = Product(name='Хлеб', price=5, quantity=12, description='Товар 1')
