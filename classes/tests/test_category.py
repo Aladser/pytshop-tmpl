@@ -48,16 +48,25 @@ def test_work(category):
     assert Category.products_quantity == 2
     category.add_product(grass)
     assert Category.products_quantity == 3
+
     # добавление непродукта или его потомка
     with pytest.raises(Exception):
         category.add_product(TestCls())
+
     # дубль товара
     category.add_product(bread)
     assert Category.products_quantity == 3
+
     # нулевое количество товара
     null_bread = Product(name='Хлеб 2', price=5, quantity=0, description='Товар 1')
     with pytest.raises(ValueError):
         category.add_product(null_bread)
+
+    prd = Product(name='Хлеб 1', price=5, quantity=1, description='Товар 1')
+    null_prd = Product(name='Хлеб 2', price=5, quantity=0, description='Товар 2')
+    with pytest.raises(ValueError):
+        Category('еда', 'здесь должна быть реклама', [prd, null_prd])
+
     # средняя цена
     ctg = Category('еда', 'здесь должна быть реклама', [])
     assert ctg.product_avg_price() == 0

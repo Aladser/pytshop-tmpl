@@ -21,6 +21,9 @@ class Category(StrImpl, MixinLog):
         Category.products_quantity += len(products)
         self.__name = name
         self.__description = description
+        for prd in products:
+            if prd.quantity == 0:
+                raise ValueError(f"Товар {prd.name} с нулевым количеством не может быть добавлен:")
         self.__products = products
         super().__init__()
 
@@ -38,7 +41,7 @@ class Category(StrImpl, MixinLog):
 
     def add_product(self, new_product):
         if not issubclass(type(new_product), Product):
-            raise Exception(f"Объект {new_product} должен быть экземляром класс Product или его наследника")
+            raise Exception(f"Объект {new_product} должен быть экземляром класса Product или его наследника")
         if new_product.quantity == 0:
             raise ValueError('Товар с нулевым количеством не может быть добавлен')
 
