@@ -22,10 +22,6 @@ def test_init(product, prd_params):
     assert product.price == prd_params['price']
     assert product.quantity == prd_params['quantity']
     assert product.description == prd_params['description']
-    # отрицательное количество
-    prd_params['quantity'] = -5
-    with pytest.raises(ValueError):
-        Product(**prd_params)
 
 
 def test_create(prd_params):

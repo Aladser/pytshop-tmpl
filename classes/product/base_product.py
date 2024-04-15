@@ -1,8 +1,7 @@
 from abc import ABC, abstractmethod
-from general import IsNaturalNumber
 
 
-class BaseProduct(ABC, IsNaturalNumber):
+class BaseProduct(ABC):
     @classmethod
     @abstractmethod
     def create(cls, prd_obj: dict):

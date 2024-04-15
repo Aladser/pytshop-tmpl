@@ -1,8 +1,9 @@
 from classes.product import Product
-from general import MixinLog
 from classes.non_positive_prd_quantity_exception import NonPositiveProductQuantityException
+from classes.log_mixin import LogMixin
 
-class Category(MixinLog):
+
+class Category(LogMixin):
     quantity = 0
     products_quantity = 0
     __name: str
