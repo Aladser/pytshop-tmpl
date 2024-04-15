@@ -1,5 +1,5 @@
 import pytest
-from classes import Category
+from classes import Category, NonPositiveProductQuantityException
 from classes.product import Product, Grass
 
 
@@ -59,12 +59,12 @@ def test_work(category):
 
     # нулевое количество товара
     null_bread = Product(name='Хлеб 2', price=5, quantity=0, description='Товар 1')
-    with pytest.raises(ValueError):
+    with pytest.raises(NonPositiveProductQuantityException):
         category.add_product(null_bread)
 
     prd = Product(name='Хлеб 1', price=5, quantity=1, description='Товар 1')
     null_prd = Product(name='Хлеб 2', price=5, quantity=0, description='Товар 2')
-    with pytest.raises(ValueError):
+    with pytest.raises(NonPositiveProductQuantityException):
         Category('еда', 'здесь должна быть реклама', [prd, null_prd])
 
     # средняя цена

@@ -1,9 +1,8 @@
 from classes.product import Product
 from general import MixinLog
-from general import StrImpl
+from classes.non_positive_prd_quantity_exception import NonPositiveProductQuantityException
 
-
-class Category(StrImpl, MixinLog):
+class Category(MixinLog):
     quantity = 0
     products_quantity = 0
     __name: str
@@ -72,8 +71,8 @@ class Category(StrImpl, MixinLog):
     @staticmethod
     def verify_product_quantity(product: Product):
         """проверить количество добавляемого продукта"""
-        if product.quantity == 0:
-            raise ValueError(f"Товар {product.name} с нулевым количеством не может быть добавлен:")
+        if product.quantity <= 0:
+            raise NonPositiveProductQuantityException(product.name)
         else:
             return True
 
