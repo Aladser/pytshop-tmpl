@@ -34,9 +34,9 @@ def category(ctg_params):
 
 def test_init(ctg_params):
     category = Category(**ctg_params)
-    assert category.name == ctg_params['name']
-    assert category.description == ctg_params['description']
-    assert category.products == [str(prd) for prd in ctg_params['products']]
+    ctg_props_list = category.get_props_dict()
+    for key in ctg_props_list:
+        assert ctg_params[key] == ctg_props_list[key]
 
     assert Category.products_quantity == 1
     assert Category.quantity == 1
