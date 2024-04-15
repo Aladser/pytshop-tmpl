@@ -32,9 +32,15 @@ class Category(StrImpl, MixinLog):
     def description(self) -> str:
         return self.__description
 
+    @property
+    def products(self) -> list:
+        return [str(prd) for prd in self.__products]
+
     def add_product(self, new_product):
         if not issubclass(type(new_product), Product):
             raise Exception(f"Объект {new_product} должен быть экземляром класс Product или его наследника")
+        if new_product.quantity == 0:
+            raise ValueError('Товар с нулевым количеством не может быть добавлен')
 
         for i in range(0, len(self.__products)):
             if self.__products[i].name == new_product.name:
@@ -45,9 +51,18 @@ class Category(StrImpl, MixinLog):
         self.__products.append(new_product)
         Category.products_quantity += 1
 
-    @property
-    def products(self) -> list:
-        return [str(prd) for prd in self.__products]
+    def product_avg_price(self):
+        """средняя цена товаров"""
+        total_price = 0
+        avg_price = 0
+        for prd in self.__products:
+            total_price += prd.price
+        try:
+            avg_price = total_price / len(self.__products)
+        except ZeroDivisionError as e:
+            print(e)
+        finally:
+            return avg_price
 
     def __len__(self) -> int:
         prd_count = 0
