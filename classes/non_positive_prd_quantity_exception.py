@@ -2,10 +2,8 @@ class NonPositiveProductQuantityException(Exception):
     """Исключение товара с неположительным количеством"""
 
     def __init__(self, product_name=None):
-        if product_name:
-            self.message = f"Товар {product_name} с неположительным количеством не может быть добавлен"
-        else:
-            self.message = 'Товар с неположительным количеством не может быть добавлен'
+        product_name_str = f"Товар {product_name}" if product_name else 'Товар'
+        self.message = f"{product_name_str} с неположительным количеством не может быть добавлен"
 
     def __str__(self):
         return self.message
