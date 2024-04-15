@@ -2,7 +2,6 @@ from classes.product import Product
 from general import MixinLog
 from classes.non_positive_prd_quantity_exception import NonPositiveProductQuantityException
 
-
 class Order(MixinLog):
     __product: Product
     __quantity: int

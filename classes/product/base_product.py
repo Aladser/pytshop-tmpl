@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
+from general import IsNaturalNumber
 
 
-class BaseProduct(ABC):
+class BaseProduct(ABC, IsNaturalNumber):
     @classmethod
     @abstractmethod
     def create(cls, prd_obj: dict):
@@ -24,8 +25,4 @@ class BaseProduct(ABC):
 
     @abstractmethod
     def __add__(self, other) -> float:
-        pass
-
-    @abstractmethod
-    def __len__(self):
         pass

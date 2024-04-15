@@ -1,3 +1,5 @@
+import pytest
+
 from classes import Order
 from classes.product import Product
 from classes import NonPositiveProductQuantityException
