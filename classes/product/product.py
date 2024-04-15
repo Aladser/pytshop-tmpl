@@ -71,7 +71,7 @@ class Product(BaseProduct, LogMixin):
         return f"{self.__name}, {self.__price} руб. Остаток: {self.__quantity} шт."
 
     def __repr__(self):
-        return self.get_props()
+        return self.get_props_str()
 
     def __len__(self):
         return self.__quantity
