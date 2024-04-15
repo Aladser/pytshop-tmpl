@@ -1,5 +1,5 @@
 class NonPositiveProductQuantityException(Exception):
-    """Исключение товара с нулевым количеством"""
+    """Исключение товара с неположительным количеством"""
 
     def __init__(self, product_name=None):
         if product_name:
