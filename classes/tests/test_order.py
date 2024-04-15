@@ -1,7 +1,6 @@
 from classes import Order
 from classes.product import Product
-from general import NullProductQuantity
-
+from classes import NullProductQuantityException
 
 def test_init():
     product = Product(name='Хлеб', price=5, quantity=12, description='Товар 1')
@@ -12,7 +11,7 @@ def test_init():
     for i in range(2):
         try:
             Order(product, i)
-        except NullProductQuantity as e:
+        except NullProductQuantityException as e:
             print(e)
         else:
             print('Товар добавлен')

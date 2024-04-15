@@ -1,5 +1,6 @@
 from classes.product import Product
-from general import MixinLog, NullProductQuantity
+from general import MixinLog
+from classes.null_prd_quantity_exception import NullProductQuantityException
 
 
 class Order(MixinLog):
@@ -9,7 +10,7 @@ class Order(MixinLog):
     def __init__(self, product: Product, quantity: int):
         self.__product = product
         if quantity == 0:
-            raise NullProductQuantity
+            raise NullProductQuantityException
         self.__quantity = quantity
         super().__init__()
 
