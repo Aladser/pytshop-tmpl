@@ -21,9 +21,11 @@ class Category(StrImpl, MixinLog):
         Category.products_quantity += len(products)
         self.__name = name
         self.__description = description
+
         for prd in products:
             self.verify_product_quantity(prd)
         self.__products = products
+
         super().__init__()
 
     @property
@@ -49,6 +51,7 @@ class Category(StrImpl, MixinLog):
                 if self.__products[i].price < new_product.price:
                     self.__products[i].price = new_product.price
                 return
+
         self.__products.append(new_product)
         Category.products_quantity += 1
 
@@ -58,6 +61,7 @@ class Category(StrImpl, MixinLog):
         avg_price = 0
         for prd in self.__products:
             total_price += prd.price
+
         try:
             avg_price = total_price / len(self.__products)
         except ZeroDivisionError as e:
