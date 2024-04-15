@@ -34,9 +34,9 @@ def category(ctg_params):
 
 def test_init(ctg_params):
     category = Category(**ctg_params)
-    ctg_props_list = category.get_props_dict()
-    for key in ctg_props_list:
-        assert ctg_params[key] == ctg_props_list[key]
+    ctg_props_dict = category.get_props_dict()
+    for key in ctg_props_dict:
+        assert ctg_params[key] == ctg_props_dict[key]
 
     assert Category.products_quantity == 1
     assert Category.quantity == 1
@@ -93,4 +93,5 @@ def test_work(category):
     ctg = Category('еда', 'здесь должна быть реклама', [])
     assert ctg.product_avg_price == 0
     ctg.add_product(bread)
-    assert ctg.product_avg_price == 5
+    ctg.add_product(grass)
+    assert ctg.product_avg_price == 7.5

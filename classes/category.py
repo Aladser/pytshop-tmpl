@@ -22,8 +22,7 @@ class Category(LogMixin):
         self.__name = name
         self.__description = description
 
-        for prd in products:
-            self.verify_product_quantity(prd)
+        [self.verify_product_quantity(prd) for prd in products]
         self.__products = products
 
         super().__init__()
@@ -58,10 +57,8 @@ class Category(LogMixin):
     @property
     def product_avg_price(self):
         """средняя цена товаров"""
-        total_price = 0
         avg_price = 0
-        for prd in self.__products:
-            total_price += prd.price
+        total_price = sum([prd.price for prd in self.__products])
 
         try:
             avg_price = total_price / len(self.__products)
@@ -79,10 +76,7 @@ class Category(LogMixin):
             return True
 
     def __len__(self) -> int:
-        prd_count = 0
-        for prd in self.__products:
-            prd_count += len(prd)
-        return prd_count
+        return sum([len(prd) for prd in self.__products])
 
     def __str__(self) -> str:
         return f"Название: {self.name}, количество продуктов: {self.__len__()} шт."
