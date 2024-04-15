@@ -2,13 +2,20 @@ import pytest
 
 from classes import Order
 from classes.product import Product
-
+from classes import NonPositiveProductQuantityException
 
 def test_init():
-    params = {'name':'Хлеб', 'price':5, 'quantity':12, 'description':'Товар 1'}
-    product = Product(**params)
-    params['quantity'] = -5
-    with pytest.raises(ValueError):
-        Product(**params)
+    product = Product(name='Хлеб', price=5, quantity=12, description='Товар 1')
     order = Order(product, 3)
     assert str(order) == 'продукт: Хлеб, 5 руб. Остаток: 12 шт., количество: 3'
+    # обработка нулевого количества продукта
+    print()
+    for i in range(-1, 2):
+        try:
+            Order(product, i)
+        except NonPositiveProductQuantityException as e:
+            print(e)
+        else:
+            print('Товар добавлен')
+        finally:
+            print('Обработка добавления товара завершена.')

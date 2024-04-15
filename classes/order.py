@@ -1,6 +1,6 @@
 from classes.product import Product
-from general import MixinLog, IsNaturalNumber
-
+from general import MixinLog
+from classes.non_positive_prd_quantity_exception import NonPositiveProductQuantityException
 
 class Order(MixinLog):
     __product: Product
@@ -8,7 +8,8 @@ class Order(MixinLog):
 
     def __init__(self, product: Product, quantity: int):
         self.__product = product
-        IsNaturalNumber.verify_natural_number(quantity)
+        if quantity <= 0:
+            raise NonPositiveProductQuantityException
         self.__quantity = quantity
         super().__init__()
 
