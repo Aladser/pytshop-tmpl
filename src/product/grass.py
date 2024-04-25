@@ -1,4 +1,4 @@
-from classes.product.product import Product
+from src.product.product import Product
 
 
 # не вижу смысла создавать класс газонная трава. Максимум можно создать наследника класса Трава

@@ -1,8 +1,9 @@
-from classes.product import Product
-from general import MixinLog
-from classes.non_positive_prd_quantity_exception import NonPositiveProductQuantityException
+from src.product import Product
+from src.log_mixin import LogMixin
+from src.non_positive_prd_quantity_exception import NonPositiveProductQuantityException
 
-class Category(MixinLog):
+
+class Category(LogMixin):
     quantity = 0
     products_quantity = 0
     __name: str
@@ -46,6 +47,7 @@ class Category(MixinLog):
 
         for i in range(0, len(self.__products)):
             if self.__products[i].name == new_product.name:
+                # если продукт есть в категории
                 self.__products[i].quantity += new_product.quantity
                 if self.__products[i].price < new_product.price:
                     self.__products[i].price = new_product.price

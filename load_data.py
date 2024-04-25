@@ -1,6 +1,6 @@
 import json
-from classes import Category
-from classes.product import Product
+from src import Category
+from src.product import Product
 
 products_file = 'data/products.json'
 if __name__ == '__main__':

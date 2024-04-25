@@ -1,8 +1,9 @@
-from classes.product.base_product import BaseProduct
-from general import MixinLog, IsNaturalNumber
+from src.product.base_product import BaseProduct
+from src.log_mixin import LogMixin
+from src.is_natural_number import IsNaturalNumber
 
 
-class Product(BaseProduct, MixinLog):
+class Product(BaseProduct, LogMixin):
     __name: str
     __description: str
     __price: float
@@ -72,7 +73,7 @@ class Product(BaseProduct, MixinLog):
         return f"{self.__name}, {self.__price} руб. Остаток: {self.__quantity} шт."
 
     def __repr__(self):
-        return self.get_props()
+        return self.get_props_str()
 
     def __len__(self):
         return self.__quantity
