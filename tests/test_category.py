@@ -1,6 +1,6 @@
 import pytest
-from classes import Category, NonPositiveProductQuantityException
-from classes.product import Product, Grass
+from src import Category, NonPositiveProductQuantityException
+from src.product import Product, Grass
 
 
 class TestCls:

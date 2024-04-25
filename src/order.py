@@ -1,8 +1,9 @@
-from classes.product import Product
-from general import MixinLog
-from classes.non_positive_prd_quantity_exception import NonPositiveProductQuantityException
+from src.product import Product
+from src.log_mixin import LogMixin
+from src.non_positive_prd_quantity_exception import NonPositiveProductQuantityException
 
-class Order(MixinLog):
+
+class Order(LogMixin):
     __product: Product
     __quantity: int
 

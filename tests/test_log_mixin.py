@@ -1,5 +1,5 @@
-from classes import Category
-from classes.product import Product, Grass
+from src import Category
+from src.product import Product, Grass
 
 
 def test_work():
