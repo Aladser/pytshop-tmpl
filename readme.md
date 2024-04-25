@@ -1,13 +1,11 @@
 # Шаблон интернет-магазина
 
-+ *general*
-    * ``MixingLog`` - вывод информации о созданном объекте
-    * ``IsNaturalNumber`` - проверка числа, является ли натуральным
 + *classes*
     * ``Category``
     * ``CategoryProductRange``
     * ``Order``
-    * ``NullProductQuantityException`` - тест нулевого числа товаров
+    * ``MixingLog`` - вывод информации о созданном объекте
+    * ``NonPositiveProductQuantityException`` - исключение неположительного числа товаров
     * *product*
       + ``BaseProduct`` - абстрактный класс продукта
       + ``Product``

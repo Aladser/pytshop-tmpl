@@ -1,5 +1,5 @@
-from src import Category
-from src.product import Product, Grass
+from classes import Category
+from classes.product import Product, Grass
 
 
 def test_work():
@@ -31,7 +31,3 @@ def test_work():
     # category
     ctg = Category('еда', 'здесь должна быть реклама', [prd, grass])
     ctg.log()
-
-    # get_props_dict()
-    props_dict = ctg.get_props_dict()
-    print(props_dict)

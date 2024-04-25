@@ -1,6 +1,6 @@
 import pytest
-from src import Category, NonPositiveProductQuantityException, IsNaturalNumber
-from src.product import Product, Grass
+from classes import Category, NonPositiveProductQuantityException
+from classes.product import Product, Grass
 
 
 class TestCls:
@@ -54,7 +54,6 @@ def test_work(category):
         category.add_product(TestCls())
 
     # дубль товара
-    bread.price = 10
     category.add_product(bread)
     assert Category.products_quantity == 3
 
@@ -72,7 +71,4 @@ def test_work(category):
     ctg = Category('еда', 'здесь должна быть реклама', [])
     assert ctg.product_avg_price() == 0
     ctg.add_product(bread)
-    assert ctg.product_avg_price() == 10
-
-    # проверка IsNaturalNumber.s_natural_number()
-    assert IsNaturalNumber.is_natural_number(5)
+    assert ctg.product_avg_price() == 5

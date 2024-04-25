@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from src.is_natural_number import IsNaturalNumber
+from general import IsNaturalNumber
 
 
 class BaseProduct(ABC, IsNaturalNumber):
