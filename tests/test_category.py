@@ -1,74 +1,117 @@
 import pytest
-from src import Category, NonPositiveProductQuantityException
+from src import Category, NonPositiveProductQuantityException, IsNaturalNumber
 from src.product import Product, Grass
 
 
 class TestCls:
-    pass
+    def __str__(self):
+        return 'TestCls'
 
 
 @pytest.fixture
-def products():
-    return [
-        Product(name='Хлеб', price=5, quantity=12, description='Товар 1')
-    ]
+def bread_params():
+    return {
+        'name': 'Хлеб',
+        'price': 5,
+        'quantity': 2,
+        'description': 'Товар 1'
+    }
 
 
 @pytest.fixture
-def category(products):
-    return Category('еда', 'здесь должна быть реклама', products)
+def bread(bread_params):
+    return Product(**bread_params)
 
 
-def test_init(category, products):
-    assert category.name == 'еда'
-    assert category.description == 'здесь должна быть реклама'
-    assert category.products == [str(prd) for prd in products]
-    assert Category.products_quantity == 1
-    assert Category.quantity == 1
-    assert len(category) == 12
-    assert category.products == ['Хлеб, 5 руб. Остаток: 12 шт.']
-    assert str(category) == 'Название: еда, количество продуктов: 12 шт.'
-
-
-def test_work(category):
-    bread = Product(name='Хлеб', price=5, quantity=1, description='Товар 1')
-    params = {
+@pytest.fixture
+def grass():
+    grass_params = {
         'name': 'газонная',
         'description': 'городская',
         'price': 10,
-        'quantity': 1,
+        'quantity': 3,
         'country_manufacturer': 'Россия',
         'germination_period': '1 year',
         'color': 'зеленый'
     }
-    grass = Grass(**params)
+    return Grass(**grass_params)
+
+
+@pytest.fixture
+def milk():
+    bread_params = {
+        'name': 'Молоко',
+        'price': 50,
+        'quantity': 1,
+        'description': 'с фермы'
+    }
+    return Product(**bread_params)
+
+
+@pytest.fixture
+def category_params(bread):
+    return {
+        'name': 'еда',
+        'description': 'реклама еды',
+        'products': [bread]
+    }
+
+
+def test_init(category_params, bread):
+    category = Category(**category_params)
+    assert category.name == category_params['name']
+    assert category.description == category_params['description']
+    assert category.products == [str(prd) for prd in category_params['products']]
+
+    assert Category.quantity == 1
+    assert Category.products_quantity == 1
+    assert len(category) == 2
+    assert category.products == [str(bread)]
+    assert str(category) == f"Название: {category.name}, количество продуктов: {len(category)} шт."
+
+
+def test_work(monkeypatch, category_params, bread, bread_params, grass, milk):
+    category = Category(**category_params)
 
     # добавление товара
-    category.add_product(bread)
-    assert Category.products_quantity == 2
     category.add_product(grass)
     assert Category.products_quantity == 3
-
-    # добавление непродукта или его потомка
-    with pytest.raises(Exception):
-        category.add_product(TestCls())
+    category.add_product(milk)
+    assert Category.products_quantity == 4
 
     # дубль товара
     category.add_product(bread)
-    assert Category.products_quantity == 3
+    assert Category.products_quantity == 4
+
+    # добавление не продукта или его потомка
+    with pytest.raises(Exception, match='Объект TestCls должен быть экземляром класса Product или его наследника'):
+        category.add_product(TestCls())
+
+    # обновляется товар категории
+    monkeypatch.setattr('builtins.input', lambda _: "y")
+    bread_params['price'] = 10
+    bread = Product(**bread_params)
+    category.add_product(bread)
+    assert Category.products_quantity == 4
 
     # нулевое количество товара
-    null_bread = Product(name='Хлеб 2', price=5, quantity=0, description='Товар 1')
+    bread_params['quantity'] = 0
+    null_bread = Product(**bread_params)
     with pytest.raises(NonPositiveProductQuantityException):
         category.add_product(null_bread)
-
-    prd = Product(name='Хлеб 1', price=5, quantity=1, description='Товар 1')
-    null_prd = Product(name='Хлеб 2', price=5, quantity=0, description='Товар 2')
     with pytest.raises(NonPositiveProductQuantityException):
-        Category('еда', 'здесь должна быть реклама', [prd, null_prd])
+        Category('еда', 'здесь должна быть реклама', [bread, null_bread])
 
     # средняя цена
-    ctg = Category('еда', 'здесь должна быть реклама', [])
-    assert ctg.product_avg_price() == 0
+    category_params['products'] = []
+    ctg = Category(**category_params)
+    assert ctg.product_avg_price == 0
+    bread_params['quantity'] = 1
+    bread = Product(**bread_params)
     ctg.add_product(bread)
-    assert ctg.product_avg_price() == 5
+    assert ctg.product_avg_price == bread_params['price']
+
+    # проверка IsNaturalNumber
+    assert IsNaturalNumber.is_natural_number(5)
+    with pytest.raises(ValueError, match='Число должно быть натуральным'):
+        IsNaturalNumber.verify_natural_number(-5)

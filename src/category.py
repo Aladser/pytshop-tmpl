@@ -42,11 +42,12 @@ class Category(LogMixin):
 
     def add_product(self, new_product):
         if not issubclass(type(new_product), Product):
-            raise Exception(f"Объект {new_product} должен быть экземляром класса Product или его наследника")
+            raise Exception(f"Объект {str(new_product)} должен быть экземляром класса Product или его наследника")
         self.verify_product_quantity(new_product)
 
         for i in range(0, len(self.__products)):
             if self.__products[i].name == new_product.name:
+                # если такой продукт есть в категории
                 self.__products[i].quantity += new_product.quantity
                 if self.__products[i].price < new_product.price:
                     self.__products[i].price = new_product.price
@@ -55,12 +56,11 @@ class Category(LogMixin):
         self.__products.append(new_product)
         Category.products_quantity += 1
 
+    @property
     def product_avg_price(self):
         """средняя цена товаров"""
-        total_price = 0
+        total_price = sum([prd.price for prd in self.__products])
         avg_price = 0
-        for prd in self.__products:
-            total_price += prd.price
 
         try:
             avg_price = total_price / len(self.__products)

@@ -22,6 +22,9 @@ def test_init(prd_params):
     prd_props_dict = prd.get_props_dict()
     for key in prd_props_dict:
         assert prd_props_dict[key] == prd_params[key]
+    assert prd.description == prd_params['description']
+    with pytest.raises(ValueError, match='Количество не может быть отрицательным числом'):
+        prd.quantity = -5
 
 
 def test_create(prd_params):
@@ -31,7 +34,7 @@ def test_create(prd_params):
         assert prd_props_dict[key] == prd_params[key]
 
 
-def test_price(product):
+def test_price(monkeypatch, product):
     price = 15
     # установка новой цены
     product.price = price
@@ -39,6 +42,8 @@ def test_price(product):
     # нулевая цена
     with pytest.raises(Exception):
         product.price = 0
+    monkeypatch.setattr('builtins.input', lambda _: "y")
+    product.price = 1
 
 
 def test_add(product):
