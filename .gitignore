@@ -3,3 +3,4 @@ main.py
 .venv
 src/__pycache__
 general/tests/__pycache__
+.coverage
